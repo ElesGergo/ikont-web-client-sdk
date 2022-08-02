@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { ClientManagementService } from './api/clientManagement.service';
 import { DefaultService } from './api/default.service';
+import { LocationService } from './api/location.service';
 
 @NgModule({
   imports: [],
@@ -22,12 +23,7 @@ export class ApiModule {
   ): ModuleWithProviders<ApiModule> {
     return {
       ngModule: ApiModule,
-      providers: [
-        {
-          provide: Configuration,
-          useFactory: configurationFactory,
-        },
-      ],
+      providers: [{ provide: Configuration, useFactory: configurationFactory }],
     };
   }
 

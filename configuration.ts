@@ -19,9 +19,7 @@ export interface ConfigurationParameters {
    * document. They should map to the value used for authentication
    * minus any standard prefixes such as 'Basic' or 'Bearer'.
    */
-  credentials?: {
-    [key: string]: string | (() => string | undefined);
-  };
+  credentials?: { [key: string]: string | (() => string | undefined) };
 }
 
 export class Configuration {
@@ -43,24 +41,18 @@ export class Configuration {
    * document. They should map to the value used for authentication
    * minus any standard prefixes such as 'Basic' or 'Bearer'.
    */
-  credentials: {
-    [key: string]: string | (() => string | undefined);
-  };
+  credentials: { [key: string]: string | (() => string | undefined) };
 
-  constructor(
-    configurationParameters: ConfigurationParameters = {}
-  ) {
+  constructor(configurationParameters: ConfigurationParameters = {}) {
     this.apiKeys = configurationParameters.apiKeys;
     this.username = configurationParameters.username;
     this.password = configurationParameters.password;
     this.accessToken = configurationParameters.accessToken;
     this.basePath = configurationParameters.basePath;
-    this.withCredentials =
-      configurationParameters.withCredentials;
+    this.withCredentials = configurationParameters.withCredentials;
     this.encoder = configurationParameters.encoder;
     if (configurationParameters.credentials) {
-      this.credentials =
-        configurationParameters.credentials;
+      this.credentials = configurationParameters.credentials;
     } else {
       this.credentials = {};
     }
@@ -73,16 +65,12 @@ export class Configuration {
    * @param contentTypes - the array of content types that are available for selection
    * @returns the selected content-type or <code>undefined</code> if no selection could be made.
    */
-  public selectHeaderContentType(
-    contentTypes: string[]
-  ): string | undefined {
+  public selectHeaderContentType(contentTypes: string[]): string | undefined {
     if (contentTypes.length === 0) {
       return undefined;
     }
 
-    const type = contentTypes.find((x: string) =>
-      this.isJsonMime(x)
-    );
+    const type = contentTypes.find((x: string) => this.isJsonMime(x));
     if (type === undefined) {
       return contentTypes[0];
     }
@@ -96,16 +84,12 @@ export class Configuration {
    * @param accepts - the array of content types that are available for selection.
    * @returns the selected content-type or <code>undefined</code> if no selection could be made.
    */
-  public selectHeaderAccept(
-    accepts: string[]
-  ): string | undefined {
+  public selectHeaderAccept(accepts: string[]): string | undefined {
     if (accepts.length === 0) {
       return undefined;
     }
 
-    const type = accepts.find((x: string) =>
-      this.isJsonMime(x)
-    );
+    const type = accepts.find((x: string) => this.isJsonMime(x));
     if (type === undefined) {
       return accepts[0];
     }
@@ -130,8 +114,7 @@ export class Configuration {
     return (
       mime !== null &&
       (jsonMime.test(mime) ||
-        mime.toLowerCase() ===
-          'application/json-patch+json')
+        mime.toLowerCase() === 'application/json-patch+json')
     );
   }
 

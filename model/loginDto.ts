@@ -10,10 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface ClientContact {
-  phone: string;
+export interface LoginDto {
   email: string;
-  website: string;
-  contatctName: string;
-  contactPosition: string;
+  password: string;
 }

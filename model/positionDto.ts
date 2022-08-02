@@ -10,10 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface ClientContact {
-  phone: string;
-  email: string;
-  website: string;
-  contatctName: string;
-  contactPosition: string;
+export interface PositionDto {
+  lable: string;
+  value: string;
 }
