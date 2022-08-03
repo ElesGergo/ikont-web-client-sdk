@@ -11,18 +11,18 @@
  */
 
 export interface AddressSuggestionDto {
-  _for: AddressSuggestionDto.ForEnum;
+  field: AddressSuggestionDto.FieldEnum;
   street: string | null;
   city: string | null;
   zip: string | null;
   country: string | null;
 }
 export namespace AddressSuggestionDto {
-  export type ForEnum = 'country' | 'city' | 'zip' | 'street';
-  export const ForEnum = {
-    Country: 'country' as ForEnum,
-    City: 'city' as ForEnum,
-    Zip: 'zip' as ForEnum,
-    Street: 'street' as ForEnum,
+  export type FieldEnum = 'country' | 'city' | 'zip' | 'street';
+  export const FieldEnum = {
+    Country: 'country' as FieldEnum,
+    City: 'city' as FieldEnum,
+    Zip: 'zip' as FieldEnum,
+    Street: 'street' as FieldEnum,
   };
 }

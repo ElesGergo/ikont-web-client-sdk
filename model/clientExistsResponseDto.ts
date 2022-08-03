@@ -10,6 +10,6 @@
  * Do not edit the class manually.
  */
 
-export interface PositionDto {
-  value: string;
+export interface ClientExistsResponseDto {
+  exists: boolean;
 }

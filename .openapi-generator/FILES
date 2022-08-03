@@ -12,6 +12,7 @@ index.ts
 model/addressSuggestionDto.ts
 model/clientAddress.ts
 model/clientContact.ts
+model/clientExistsResponseDto.ts
 model/createClientCompanyDto.ts
 model/generalClientInformation.ts
 model/loginDto.ts
