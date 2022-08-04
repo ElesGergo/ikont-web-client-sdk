@@ -9,11 +9,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { ClientContact } from './clientContact';
+import { ClientAddress } from './clientAddress';
+import { GeneralClientInformation } from './generalClientInformation';
 
-export interface GeneralClientInformation {
-  name: string;
-  taxNumber: string;
-  registrationNumber: string;
-  subcontractor: boolean;
-  customer: boolean;
+export interface ClientDto {
+  general: GeneralClientInformation;
+  addresses: Array<ClientAddress>;
+  contacts: Array<ClientContact>;
+  website: string;
 }

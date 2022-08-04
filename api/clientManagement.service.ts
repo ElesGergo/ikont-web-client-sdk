@@ -25,9 +25,9 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
-import { ClientExistsResponseDto } from '../model/clientExistsResponseDto';
+import { ClientDto } from '../model/clientDto';
 // @ts-ignore
-import { CreateClientCompanyDto } from '../model/createClientCompanyDto';
+import { ClientExistsResponseDto } from '../model/clientExistsResponseDto';
 // @ts-ignore
 import { PositionDto } from '../model/positionDto';
 
@@ -127,19 +127,19 @@ export class ClientManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<any>;
+  ): Observable<ClientExistsResponseDto>;
   public clientManagementControllerClientExists(
     name: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<any>>;
+  ): Observable<HttpResponse<ClientExistsResponseDto>>;
   public clientManagementControllerClientExists(
     name: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<any>>;
+  ): Observable<HttpEvent<ClientExistsResponseDto>>;
   public clientManagementControllerClientExists(
     name: string,
     observe: any = 'body',
@@ -188,7 +188,7 @@ export class ClientManagementService {
       }
     }
 
-    return this.httpClient.get<any>(
+    return this.httpClient.get<ClientExistsResponseDto>(
       `${
         this.configuration.basePath
       }/client-management/client-exists/${encodeURIComponent(String(name))}`,
@@ -204,40 +204,37 @@ export class ClientManagementService {
   }
 
   /**
-   * @param createClientCompanyDto
+   * @param clientDto
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public clientManagementControllerCreate(
-    createClientCompanyDto: CreateClientCompanyDto,
+    clientDto: ClientDto,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<CreateClientCompanyDto>;
+  ): Observable<ClientDto>;
   public clientManagementControllerCreate(
-    createClientCompanyDto: CreateClientCompanyDto,
+    clientDto: ClientDto,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<CreateClientCompanyDto>>;
+  ): Observable<HttpResponse<ClientDto>>;
   public clientManagementControllerCreate(
-    createClientCompanyDto: CreateClientCompanyDto,
+    clientDto: ClientDto,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<CreateClientCompanyDto>>;
+  ): Observable<HttpEvent<ClientDto>>;
   public clientManagementControllerCreate(
-    createClientCompanyDto: CreateClientCompanyDto,
+    clientDto: ClientDto,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
-    if (
-      createClientCompanyDto === null ||
-      createClientCompanyDto === undefined
-    ) {
+    if (clientDto === null || clientDto === undefined) {
       throw new Error(
-        'Required parameter createClientCompanyDto was null or undefined when calling clientManagementControllerCreate.'
+        'Required parameter clientDto was null or undefined when calling clientManagementControllerCreate.'
       );
     }
 
@@ -288,9 +285,9 @@ export class ClientManagementService {
       }
     }
 
-    return this.httpClient.post<CreateClientCompanyDto>(
+    return this.httpClient.post<ClientDto>(
       `${this.configuration.basePath}/client-management`,
-      createClientCompanyDto,
+      clientDto,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -469,17 +466,17 @@ export class ClientManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<any>;
+  ): Observable<Array<PositionDto>>;
   public clientManagementControllerFindPositions(
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<any>>;
+  ): Observable<HttpResponse<Array<PositionDto>>>;
   public clientManagementControllerFindPositions(
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<any>>;
+  ): Observable<HttpEvent<Array<PositionDto>>>;
   public clientManagementControllerFindPositions(
     observe: any = 'body',
     reportProgress: boolean = false,
@@ -521,7 +518,7 @@ export class ClientManagementService {
       }
     }
 
-    return this.httpClient.get<any>(
+    return this.httpClient.get<Array<PositionDto>>(
       `${this.configuration.basePath}/client-management/positions`,
       {
         context: localVarHttpContext,

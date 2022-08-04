@@ -13,7 +13,6 @@
 export interface ClientContact {
   phone: string;
   email: string;
-  website: string;
   contatctName: string;
   contactPosition: string;
 }

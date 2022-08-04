@@ -11,9 +11,16 @@
  */
 
 export interface ClientAddress {
-  type: object;
+  type: ClientAddress.TypeEnum;
   city: string;
   zip: string;
   street: string;
   country: string;
+}
+export namespace ClientAddress {
+  export type TypeEnum = 'site' | 'premise';
+  export const TypeEnum = {
+    Site: 'site' as TypeEnum,
+    Premise: 'premise' as TypeEnum,
+  };
 }
