@@ -125,19 +125,19 @@ export class LocationService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<AddressSuggestionResponseDto>;
+  ): Observable<Array<AddressSuggestionResponseDto>>;
   public locationControllerGetAddressSuggestion(
     addressSuggestionDto: AddressSuggestionDto,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<AddressSuggestionResponseDto>>;
+  ): Observable<HttpResponse<Array<AddressSuggestionResponseDto>>>;
   public locationControllerGetAddressSuggestion(
     addressSuggestionDto: AddressSuggestionDto,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<AddressSuggestionResponseDto>>;
+  ): Observable<HttpEvent<Array<AddressSuggestionResponseDto>>>;
   public locationControllerGetAddressSuggestion(
     addressSuggestionDto: AddressSuggestionDto,
     observe: any = 'body',
@@ -197,7 +197,7 @@ export class LocationService {
       }
     }
 
-    return this.httpClient.post<AddressSuggestionResponseDto>(
+    return this.httpClient.post<Array<AddressSuggestionResponseDto>>(
       `${this.configuration.basePath}/location/address-suggestion`,
       addressSuggestionDto,
       {
