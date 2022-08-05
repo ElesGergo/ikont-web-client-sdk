@@ -1,5 +1,4 @@
 export * from './addressSuggestionDto';
-export * from './addressSuggestionResponseDto';
 export * from './clientAddress';
 export * from './clientContact';
 export * from './clientDto';

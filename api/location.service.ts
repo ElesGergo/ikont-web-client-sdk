@@ -26,8 +26,6 @@ import { Observable } from 'rxjs';
 
 // @ts-ignore
 import { AddressSuggestionDto } from '../model/addressSuggestionDto';
-// @ts-ignore
-import { AddressSuggestionResponseDto } from '../model/addressSuggestionResponseDto';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
@@ -125,19 +123,19 @@ export class LocationService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<Array<AddressSuggestionResponseDto>>;
+  ): Observable<Array<string>>;
   public locationControllerGetAddressSuggestion(
     addressSuggestionDto: AddressSuggestionDto,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<Array<AddressSuggestionResponseDto>>>;
+  ): Observable<HttpResponse<Array<string>>>;
   public locationControllerGetAddressSuggestion(
     addressSuggestionDto: AddressSuggestionDto,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<Array<AddressSuggestionResponseDto>>>;
+  ): Observable<HttpEvent<Array<string>>>;
   public locationControllerGetAddressSuggestion(
     addressSuggestionDto: AddressSuggestionDto,
     observe: any = 'body',
@@ -197,7 +195,7 @@ export class LocationService {
       }
     }
 
-    return this.httpClient.post<Array<AddressSuggestionResponseDto>>(
+    return this.httpClient.post<Array<string>>(
       `${this.configuration.basePath}/location/address-suggestion`,
       addressSuggestionDto,
       {
