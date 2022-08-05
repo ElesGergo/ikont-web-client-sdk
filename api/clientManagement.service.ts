@@ -29,6 +29,8 @@ import { ClientDto } from '../model/clientDto';
 // @ts-ignore
 import { ClientExistsResponseDto } from '../model/clientExistsResponseDto';
 // @ts-ignore
+import { FullClientDto } from '../model/fullClientDto';
+// @ts-ignore
 import { PositionDto } from '../model/positionDto';
 
 // @ts-ignore
@@ -213,19 +215,19 @@ export class ClientManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<ClientDto>;
+  ): Observable<FullClientDto>;
   public clientManagementControllerCreate(
     clientDto: ClientDto,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<ClientDto>>;
+  ): Observable<HttpResponse<FullClientDto>>;
   public clientManagementControllerCreate(
     clientDto: ClientDto,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<ClientDto>>;
+  ): Observable<HttpEvent<FullClientDto>>;
   public clientManagementControllerCreate(
     clientDto: ClientDto,
     observe: any = 'body',
@@ -285,7 +287,7 @@ export class ClientManagementService {
       }
     }
 
-    return this.httpClient.post<ClientDto>(
+    return this.httpClient.post<FullClientDto>(
       `${this.configuration.basePath}/client-management`,
       clientDto,
       {
@@ -307,17 +309,17 @@ export class ClientManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<string>;
+  ): Observable<FullClientDto>;
   public clientManagementControllerFindAll(
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<string>>;
+  ): Observable<HttpResponse<FullClientDto>>;
   public clientManagementControllerFindAll(
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<string>>;
+  ): Observable<HttpEvent<FullClientDto>>;
   public clientManagementControllerFindAll(
     observe: any = 'body',
     reportProgress: boolean = false,
@@ -359,7 +361,7 @@ export class ClientManagementService {
       }
     }
 
-    return this.httpClient.get<string>(
+    return this.httpClient.get<FullClientDto>(
       `${this.configuration.basePath}/client-management`,
       {
         context: localVarHttpContext,
@@ -382,19 +384,19 @@ export class ClientManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<string>;
+  ): Observable<FullClientDto>;
   public clientManagementControllerFindOne(
     id: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<string>>;
+  ): Observable<HttpResponse<FullClientDto>>;
   public clientManagementControllerFindOne(
     id: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<string>>;
+  ): Observable<HttpEvent<FullClientDto>>;
   public clientManagementControllerFindOne(
     id: string,
     observe: any = 'body',
@@ -443,7 +445,7 @@ export class ClientManagementService {
       }
     }
 
-    return this.httpClient.get<string>(
+    return this.httpClient.get<FullClientDto>(
       `${this.configuration.basePath}/client-management/${encodeURIComponent(
         String(id)
       )}`,
@@ -619,34 +621,34 @@ export class ClientManagementService {
 
   /**
    * @param id
-   * @param body
+   * @param fullClientDto
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public clientManagementControllerUpdate(
     id: string,
-    body: object,
+    fullClientDto: FullClientDto,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<string>;
   public clientManagementControllerUpdate(
     id: string,
-    body: object,
+    fullClientDto: FullClientDto,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<string>>;
   public clientManagementControllerUpdate(
     id: string,
-    body: object,
+    fullClientDto: FullClientDto,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<string>>;
   public clientManagementControllerUpdate(
     id: string,
-    body: object,
+    fullClientDto: FullClientDto,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
@@ -656,9 +658,9 @@ export class ClientManagementService {
         'Required parameter id was null or undefined when calling clientManagementControllerUpdate.'
       );
     }
-    if (body === null || body === undefined) {
+    if (fullClientDto === null || fullClientDto === undefined) {
       throw new Error(
-        'Required parameter body was null or undefined when calling clientManagementControllerUpdate.'
+        'Required parameter fullClientDto was null or undefined when calling clientManagementControllerUpdate.'
       );
     }
 
@@ -713,7 +715,7 @@ export class ClientManagementService {
       `${this.configuration.basePath}/client-management/${encodeURIComponent(
         String(id)
       )}`,
-      body,
+      fullClientDto,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
