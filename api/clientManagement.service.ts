@@ -309,17 +309,17 @@ export class ClientManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<FullClientDto>;
+  ): Observable<Array<FullClientDto>>;
   public clientManagementControllerFindAll(
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<FullClientDto>>;
+  ): Observable<HttpResponse<Array<FullClientDto>>>;
   public clientManagementControllerFindAll(
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<FullClientDto>>;
+  ): Observable<HttpEvent<Array<FullClientDto>>>;
   public clientManagementControllerFindAll(
     observe: any = 'body',
     reportProgress: boolean = false,
@@ -361,7 +361,7 @@ export class ClientManagementService {
       }
     }
 
-    return this.httpClient.get<FullClientDto>(
+    return this.httpClient.get<Array<FullClientDto>>(
       `${this.configuration.basePath}/client-management`,
       {
         context: localVarHttpContext,
