@@ -6,4 +6,5 @@ export * from './clientExistsResponseDto';
 export * from './fullClientDto';
 export * from './generalClientInformation';
 export * from './loginDto';
+export * from './loginResponseDto';
 export * from './positionDto';
