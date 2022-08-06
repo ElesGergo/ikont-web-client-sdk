@@ -10,6 +10,7 @@ encoder.ts
 git_push.sh
 index.ts
 model/addressSuggestionDto.ts
+model/claimsDto.ts
 model/clientAddress.ts
 model/clientContact.ts
 model/clientDto.ts
