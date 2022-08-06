@@ -543,19 +543,19 @@ export class ClientManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<string>;
+  ): Observable<Array<object>>;
   public clientManagementControllerRemove(
     id: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<string>>;
+  ): Observable<HttpResponse<Array<object>>>;
   public clientManagementControllerRemove(
     id: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<string>>;
+  ): Observable<HttpEvent<Array<object>>>;
   public clientManagementControllerRemove(
     id: string,
     observe: any = 'body',
@@ -604,7 +604,7 @@ export class ClientManagementService {
       }
     }
 
-    return this.httpClient.delete<string>(
+    return this.httpClient.delete<Array<object>>(
       `${this.configuration.basePath}/client-management/${encodeURIComponent(
         String(id)
       )}`,
