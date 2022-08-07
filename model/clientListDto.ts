@@ -13,10 +13,12 @@ import { ClientContact } from './clientContact';
 import { ClientAddress } from './clientAddress';
 import { GeneralClientInformation } from './generalClientInformation';
 
-export interface FullClientDto {
-  id: number;
+export interface ClientListDto {
+  id: object;
   general: GeneralClientInformation;
-  addresses: Array<ClientAddress>;
-  contacts: Array<ClientContact>;
-  website: string;
+  addresses: ClientAddress;
+  contact: ClientContact;
+  website: object;
+  address: object;
+  addressType: string;
 }

@@ -3,6 +3,7 @@ export * from './clientAddress';
 export * from './clientContact';
 export * from './clientDto';
 export * from './clientExistsResponseDto';
+export * from './clientListDto';
 export * from './fullClientDto';
 export * from './generalClientInformation';
 export * from './loginDto';

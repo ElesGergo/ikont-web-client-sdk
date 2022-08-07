@@ -29,6 +29,8 @@ import { ClientDto } from '../model/clientDto';
 // @ts-ignore
 import { ClientExistsResponseDto } from '../model/clientExistsResponseDto';
 // @ts-ignore
+import { ClientListDto } from '../model/clientListDto';
+// @ts-ignore
 import { FullClientDto } from '../model/fullClientDto';
 // @ts-ignore
 import { PositionDto } from '../model/positionDto';
@@ -309,17 +311,17 @@ export class ClientManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<Array<FullClientDto>>;
+  ): Observable<Array<ClientListDto>>;
   public clientManagementControllerFindAll(
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<Array<FullClientDto>>>;
+  ): Observable<HttpResponse<Array<ClientListDto>>>;
   public clientManagementControllerFindAll(
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<Array<FullClientDto>>>;
+  ): Observable<HttpEvent<Array<ClientListDto>>>;
   public clientManagementControllerFindAll(
     observe: any = 'body',
     reportProgress: boolean = false,
@@ -361,7 +363,7 @@ export class ClientManagementService {
       }
     }
 
-    return this.httpClient.get<Array<FullClientDto>>(
+    return this.httpClient.get<Array<ClientListDto>>(
       `${this.configuration.basePath}/client-management`,
       {
         context: localVarHttpContext,
@@ -608,114 +610,6 @@ export class ClientManagementService {
       `${this.configuration.basePath}/client-management/${encodeURIComponent(
         String(id)
       )}`,
-      {
-        context: localVarHttpContext,
-        responseType: <any>responseType_,
-        withCredentials: this.configuration.withCredentials,
-        headers: localVarHeaders,
-        observe: observe,
-        reportProgress: reportProgress,
-      }
-    );
-  }
-
-  /**
-   * @param id
-   * @param fullClientDto
-   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-   * @param reportProgress flag to report request and response progress.
-   */
-  public clientManagementControllerUpdate(
-    id: string,
-    fullClientDto: FullClientDto,
-    observe?: 'body',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<string>;
-  public clientManagementControllerUpdate(
-    id: string,
-    fullClientDto: FullClientDto,
-    observe?: 'response',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<string>>;
-  public clientManagementControllerUpdate(
-    id: string,
-    fullClientDto: FullClientDto,
-    observe?: 'events',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<string>>;
-  public clientManagementControllerUpdate(
-    id: string,
-    fullClientDto: FullClientDto,
-    observe: any = 'body',
-    reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<any> {
-    if (id === null || id === undefined) {
-      throw new Error(
-        'Required parameter id was null or undefined when calling clientManagementControllerUpdate.'
-      );
-    }
-    if (fullClientDto === null || fullClientDto === undefined) {
-      throw new Error(
-        'Required parameter fullClientDto was null or undefined when calling clientManagementControllerUpdate.'
-      );
-    }
-
-    let localVarHeaders = this.defaultHeaders;
-
-    let localVarHttpHeaderAcceptSelected: string | undefined =
-      options && options.httpHeaderAccept;
-    if (localVarHttpHeaderAcceptSelected === undefined) {
-      // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['application/json'];
-      localVarHttpHeaderAcceptSelected =
-        this.configuration.selectHeaderAccept(httpHeaderAccepts);
-    }
-    if (localVarHttpHeaderAcceptSelected !== undefined) {
-      localVarHeaders = localVarHeaders.set(
-        'Accept',
-        localVarHttpHeaderAcceptSelected
-      );
-    }
-
-    let localVarHttpContext: HttpContext | undefined =
-      options && options.context;
-    if (localVarHttpContext === undefined) {
-      localVarHttpContext = new HttpContext();
-    }
-
-    // to determine the Content-Type header
-    const consumes: string[] = ['application/json'];
-    const httpContentTypeSelected: string | undefined =
-      this.configuration.selectHeaderContentType(consumes);
-    if (httpContentTypeSelected !== undefined) {
-      localVarHeaders = localVarHeaders.set(
-        'Content-Type',
-        httpContentTypeSelected
-      );
-    }
-
-    let responseType_: 'text' | 'json' | 'blob' = 'json';
-    if (localVarHttpHeaderAcceptSelected) {
-      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-        responseType_ = 'text';
-      } else if (
-        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
-      ) {
-        responseType_ = 'json';
-      } else {
-        responseType_ = 'blob';
-      }
-    }
-
-    return this.httpClient.patch<string>(
-      `${this.configuration.basePath}/client-management/${encodeURIComponent(
-        String(id)
-      )}`,
-      fullClientDto,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
