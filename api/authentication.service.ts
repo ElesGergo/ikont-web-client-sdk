@@ -25,11 +25,7 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
-import { ClaimsDto } from '../model/claimsDto';
-// @ts-ignore
 import { LoginDto } from '../model/loginDto';
-// @ts-ignore
-import { LoginResponseDto } from '../model/loginResponseDto';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
@@ -125,17 +121,17 @@ export class AuthenticationService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<ClaimsDto>;
+  ): Observable<Array<string>>;
   public authControllerGetUserClaims(
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<ClaimsDto>>;
+  ): Observable<HttpResponse<Array<string>>>;
   public authControllerGetUserClaims(
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<ClaimsDto>>;
+  ): Observable<HttpEvent<Array<string>>>;
   public authControllerGetUserClaims(
     observe: any = 'body',
     reportProgress: boolean = false,
@@ -177,7 +173,7 @@ export class AuthenticationService {
       }
     }
 
-    return this.httpClient.get<ClaimsDto>(
+    return this.httpClient.get<Array<string>>(
       `${this.configuration.basePath}/auth/claims`,
       {
         context: localVarHttpContext,
@@ -200,19 +196,19 @@ export class AuthenticationService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<LoginResponseDto>;
+  ): Observable<string>;
   public authControllerLoginUser(
     loginDto: LoginDto,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<LoginResponseDto>>;
+  ): Observable<HttpResponse<string>>;
   public authControllerLoginUser(
     loginDto: LoginDto,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<LoginResponseDto>>;
+  ): Observable<HttpEvent<string>>;
   public authControllerLoginUser(
     loginDto: LoginDto,
     observe: any = 'body',
@@ -272,7 +268,7 @@ export class AuthenticationService {
       }
     }
 
-    return this.httpClient.post<LoginResponseDto>(
+    return this.httpClient.post<string>(
       `${this.configuration.basePath}/auth/login`,
       loginDto,
       {

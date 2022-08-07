@@ -10,7 +10,6 @@ encoder.ts
 git_push.sh
 index.ts
 model/addressSuggestionDto.ts
-model/claimsDto.ts
 model/clientAddress.ts
 model/clientContact.ts
 model/clientDto.ts
@@ -18,7 +17,6 @@ model/clientExistsResponseDto.ts
 model/fullClientDto.ts
 model/generalClientInformation.ts
 model/loginDto.ts
-model/loginResponseDto.ts
 model/models.ts
 model/positionDto.ts
 ng-package.json
