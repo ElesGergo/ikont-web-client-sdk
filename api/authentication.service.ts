@@ -26,6 +26,8 @@ import { Observable } from 'rxjs';
 
 // @ts-ignore
 import { LoginDto } from '../model/loginDto';
+// @ts-ignore
+import { LoginResponseDto } from '../model/loginResponseDto';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
@@ -196,19 +198,19 @@ export class AuthenticationService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<string>;
+  ): Observable<LoginResponseDto>;
   public authControllerLoginUser(
     loginDto: LoginDto,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<string>>;
+  ): Observable<HttpResponse<LoginResponseDto>>;
   public authControllerLoginUser(
     loginDto: LoginDto,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<string>>;
+  ): Observable<HttpEvent<LoginResponseDto>>;
   public authControllerLoginUser(
     loginDto: LoginDto,
     observe: any = 'body',
@@ -268,7 +270,7 @@ export class AuthenticationService {
       }
     }
 
-    return this.httpClient.post<string>(
+    return this.httpClient.post<LoginResponseDto>(
       `${this.configuration.basePath}/auth/login`,
       loginDto,
       {

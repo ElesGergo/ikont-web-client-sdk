@@ -17,6 +17,7 @@ model/clientExistsResponseDto.ts
 model/fullClientDto.ts
 model/generalClientInformation.ts
 model/loginDto.ts
+model/loginResponseDto.ts
 model/models.ts
 model/positionDto.ts
 ng-package.json
