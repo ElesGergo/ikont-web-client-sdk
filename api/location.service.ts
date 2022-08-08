@@ -196,7 +196,7 @@ export class LocationService {
     }
 
     return this.httpClient.post<Array<string>>(
-      `${this.configuration.basePath}/location/address-suggestion`,
+      `${this.configuration.basePath}/v0/location/address-suggestion`,
       addressSuggestionDto,
       {
         context: localVarHttpContext,

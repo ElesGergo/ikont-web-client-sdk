@@ -195,7 +195,7 @@ export class ClientManagementService {
     return this.httpClient.get<ClientExistsResponseDto>(
       `${
         this.configuration.basePath
-      }/client-management/client-exists/${encodeURIComponent(String(name))}`,
+      }/v0/client-management/client-exists/${encodeURIComponent(String(name))}`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -290,7 +290,7 @@ export class ClientManagementService {
     }
 
     return this.httpClient.post<FullClientDto>(
-      `${this.configuration.basePath}/client-management`,
+      `${this.configuration.basePath}/v0/client-management`,
       clientDto,
       {
         context: localVarHttpContext,
@@ -364,7 +364,7 @@ export class ClientManagementService {
     }
 
     return this.httpClient.get<Array<ClientListDto>>(
-      `${this.configuration.basePath}/client-management`,
+      `${this.configuration.basePath}/v0/client-management`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -448,7 +448,7 @@ export class ClientManagementService {
     }
 
     return this.httpClient.get<FullClientDto>(
-      `${this.configuration.basePath}/client-management/${encodeURIComponent(
+      `${this.configuration.basePath}/v0/client-management/${encodeURIComponent(
         String(id)
       )}`,
       {
@@ -523,7 +523,7 @@ export class ClientManagementService {
     }
 
     return this.httpClient.get<Array<PositionDto>>(
-      `${this.configuration.basePath}/client-management/positions`,
+      `${this.configuration.basePath}/v0/client-management/positions`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -607,7 +607,7 @@ export class ClientManagementService {
     }
 
     return this.httpClient.delete<any>(
-      `${this.configuration.basePath}/client-management/${encodeURIComponent(
+      `${this.configuration.basePath}/v0/client-management/${encodeURIComponent(
         String(id)
       )}`,
       {

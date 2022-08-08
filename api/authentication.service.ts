@@ -176,7 +176,7 @@ export class AuthenticationService {
     }
 
     return this.httpClient.get<Array<string>>(
-      `${this.configuration.basePath}/auth/claims`,
+      `${this.configuration.basePath}/v0/auth/claims`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -271,7 +271,7 @@ export class AuthenticationService {
     }
 
     return this.httpClient.post<LoginResponseDto>(
-      `${this.configuration.basePath}/auth/login`,
+      `${this.configuration.basePath}/v0/auth/login`,
       loginDto,
       {
         context: localVarHttpContext,
