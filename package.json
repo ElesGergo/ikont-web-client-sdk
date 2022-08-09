@@ -1,10 +1,10 @@
 {
   "name": "ikont-web-client-sdk",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "OpenAPI client for ik-web-client",
   "author": "OpenAPI-Generator Contributors",
   "publishConfig": {
-    "registry": "https://npm.package.github.com/@ElesGergo"
+    "registry": "https://npm.pkg.github.com/@ElesGergo"
   },
   "keywords": [
     "openapi-client",
