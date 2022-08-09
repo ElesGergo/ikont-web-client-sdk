@@ -1,5 +1,5 @@
 {
-  "name": "ikont-web-client-sdk",
+  "name": "@ElesGergo/ikont-web-client-sdk",
   "version": "0.0.4",
   "description": "OpenAPI client for ik-web-client",
   "author": "OpenAPI-Generator Contributors",
