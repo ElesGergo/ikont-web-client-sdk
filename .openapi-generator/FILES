@@ -17,11 +17,12 @@ model/clientExistsResponseDto.ts
 model/clientListDto.ts
 model/fullClientDto.ts
 model/generalClientInformation.ts
+model/idRepsponeDto.ts
+model/idsRepsponeDto.ts
 model/loginDto.ts
 model/loginResponseDto.ts
 model/models.ts
 model/positionDto.ts
 ng-package.json
-package.json
 tsconfig.json
 variables.ts
