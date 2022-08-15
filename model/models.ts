@@ -10,4 +10,5 @@ export * from './idRepsponeDto';
 export * from './idsRepsponeDto';
 export * from './loginDto';
 export * from './loginResponseDto';
+export * from './passwordResetDto';
 export * from './positionDto';

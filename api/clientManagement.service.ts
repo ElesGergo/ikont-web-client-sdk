@@ -42,11 +42,14 @@ import { PositionDto } from '../model/positionDto';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
 import { Configuration } from '../configuration';
+import { ClientManagementServiceInterface } from './clientManagement.serviceInterface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ClientManagementService {
+export class ClientManagementService
+  implements ClientManagementServiceInterface
+{
   protected basePath = 'http://localhost';
   public defaultHeaders = new HttpHeaders();
   public configuration = new Configuration();
@@ -630,25 +633,25 @@ export class ClientManagementService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public clientManagementControllerRemoveMany(
+  public clientManagementControllerRemoveManies(
     ids: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<IdsRepsponeDto>;
-  public clientManagementControllerRemoveMany(
+  public clientManagementControllerRemoveManies(
     ids: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<IdsRepsponeDto>>;
-  public clientManagementControllerRemoveMany(
+  public clientManagementControllerRemoveManies(
     ids: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<IdsRepsponeDto>>;
-  public clientManagementControllerRemoveMany(
+  public clientManagementControllerRemoveManies(
     ids: string,
     observe: any = 'body',
     reportProgress: boolean = false,
@@ -656,7 +659,7 @@ export class ClientManagementService {
   ): Observable<any> {
     if (ids === null || ids === undefined) {
       throw new Error(
-        'Required parameter ids was null or undefined when calling clientManagementControllerRemoveMany.'
+        'Required parameter ids was null or undefined when calling clientManagementControllerRemoveManies.'
       );
     }
 
@@ -699,7 +702,103 @@ export class ClientManagementService {
     return this.httpClient.delete<IdsRepsponeDto>(
       `${
         this.configuration.basePath
-      }/v0/client-management/bulk/${encodeURIComponent(String(ids))}`,
+      }/v0/client-management/bulks/${encodeURIComponent(String(ids))}`,
+      {
+        context: localVarHttpContext,
+        responseType: <any>responseType_,
+        withCredentials: this.configuration.withCredentials,
+        headers: localVarHeaders,
+        observe: observe,
+        reportProgress: reportProgress,
+      }
+    );
+  }
+
+  /**
+   * @param fullClientDto
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public clientManagementControllerUpdate(
+    fullClientDto: FullClientDto,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<FullClientDto>;
+  public clientManagementControllerUpdate(
+    fullClientDto: FullClientDto,
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpResponse<FullClientDto>>;
+  public clientManagementControllerUpdate(
+    fullClientDto: FullClientDto,
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpEvent<FullClientDto>>;
+  public clientManagementControllerUpdate(
+    fullClientDto: FullClientDto,
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<any> {
+    if (fullClientDto === null || fullClientDto === undefined) {
+      throw new Error(
+        'Required parameter fullClientDto was null or undefined when calling clientManagementControllerUpdate.'
+      );
+    }
+
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined =
+      options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/json'];
+      localVarHttpHeaderAcceptSelected =
+        this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Accept',
+        localVarHttpHeaderAcceptSelected
+      );
+    }
+
+    let localVarHttpContext: HttpContext | undefined =
+      options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    // to determine the Content-Type header
+    const consumes: string[] = ['application/json'];
+    const httpContentTypeSelected: string | undefined =
+      this.configuration.selectHeaderContentType(consumes);
+    if (httpContentTypeSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Content-Type',
+        httpContentTypeSelected
+      );
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.patch<FullClientDto>(
+      `${this.configuration.basePath}/v0/client-management`,
+      fullClientDto,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,

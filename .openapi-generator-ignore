@@ -1,3 +1,4 @@
 # OpenAPI Generator Ignore
 package.json
 .openapi-generator-igonre
+dist

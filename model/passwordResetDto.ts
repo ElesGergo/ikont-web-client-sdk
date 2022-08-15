@@ -10,8 +10,6 @@
  * Do not edit the class manually.
  */
 
-export interface LoginDto {
+export interface PasswordResetDto {
   email: string;
-  password: string;
-  stayLoggedIn: boolean;
 }
