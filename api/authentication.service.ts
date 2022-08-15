@@ -34,12 +34,11 @@ import { PasswordResetDto } from '../model/passwordResetDto';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
 import { Configuration } from '../configuration';
-import { AuthenticationServiceInterface } from './authentication.serviceInterface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthenticationService implements AuthenticationServiceInterface {
+export class AuthenticationService {
   protected basePath = 'http://localhost';
   public defaultHeaders = new HttpHeaders();
   public configuration = new Configuration();

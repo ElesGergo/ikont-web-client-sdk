@@ -3,11 +3,8 @@ README.md
 api.module.ts
 api/api.ts
 api/authentication.service.ts
-api/authentication.serviceInterface.ts
 api/clientManagement.service.ts
-api/clientManagement.serviceInterface.ts
 api/location.service.ts
-api/location.serviceInterface.ts
 configuration.ts
 encoder.ts
 git_push.sh

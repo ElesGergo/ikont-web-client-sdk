@@ -88,7 +88,7 @@ export interface ClientManagementServiceInterface {
    *
    * @param ids
    */
-  clientManagementControllerRemoveMany(
+  clientManagementControllerRemoveManies(
     ids: string,
     extraHttpRequestParams?: any
   ): Observable<IdsRepsponeDto>;

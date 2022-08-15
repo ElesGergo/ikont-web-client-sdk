@@ -30,12 +30,11 @@ import { AddressSuggestionDto } from '../model/addressSuggestionDto';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
 import { Configuration } from '../configuration';
-import { LocationServiceInterface } from './location.serviceInterface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LocationService implements LocationServiceInterface {
+export class LocationService {
   protected basePath = 'http://localhost';
   public defaultHeaders = new HttpHeaders();
   public configuration = new Configuration();

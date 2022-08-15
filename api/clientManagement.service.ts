@@ -42,14 +42,11 @@ import { PositionDto } from '../model/positionDto';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
 import { Configuration } from '../configuration';
-import { ClientManagementServiceInterface } from './clientManagement.serviceInterface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ClientManagementService
-  implements ClientManagementServiceInterface
-{
+export class ClientManagementService {
   protected basePath = 'http://localhost';
   public defaultHeaders = new HttpHeaders();
   public configuration = new Configuration();
@@ -702,7 +699,7 @@ export class ClientManagementService
     return this.httpClient.delete<IdsRepsponeDto>(
       `${
         this.configuration.basePath
-      }/v0/client-management/bulks/${encodeURIComponent(String(ids))}`,
+      }/v0/client-management/bulk/${encodeURIComponent(String(ids))}`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
