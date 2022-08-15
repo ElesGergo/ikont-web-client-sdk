@@ -633,25 +633,25 @@ export class ClientManagementService
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public clientManagementControllerRemoveManies(
+  public clientManagementControllerRemoveMany(
     ids: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<IdsRepsponeDto>;
-  public clientManagementControllerRemoveManies(
+  public clientManagementControllerRemoveMany(
     ids: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<IdsRepsponeDto>>;
-  public clientManagementControllerRemoveManies(
+  public clientManagementControllerRemoveMany(
     ids: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<IdsRepsponeDto>>;
-  public clientManagementControllerRemoveManies(
+  public clientManagementControllerRemoveMany(
     ids: string,
     observe: any = 'body',
     reportProgress: boolean = false,
@@ -659,7 +659,7 @@ export class ClientManagementService
   ): Observable<any> {
     if (ids === null || ids === undefined) {
       throw new Error(
-        'Required parameter ids was null or undefined when calling clientManagementControllerRemoveManies.'
+        'Required parameter ids was null or undefined when calling clientManagementControllerRemoveMany.'
       );
     }
 
