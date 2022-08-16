@@ -9,8 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { ClientListDto } from './clientListDto';
 
-export interface LoginDto {
-  email: string;
-  password: string;
+export interface ClientListSearchResponseDto {
+  clientList: Array<ClientListDto>;
+  totalRecords: number;
 }

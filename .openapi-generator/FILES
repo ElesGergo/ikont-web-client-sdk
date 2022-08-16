@@ -4,6 +4,7 @@ api.module.ts
 api/api.ts
 api/authentication.service.ts
 api/clientManagement.service.ts
+api/default.service.ts
 api/location.service.ts
 configuration.ts
 encoder.ts
@@ -15,6 +16,10 @@ model/clientContact.ts
 model/clientDto.ts
 model/clientExistsResponseDto.ts
 model/clientListDto.ts
+model/clientListSearchDto.ts
+model/clientListSearchResponseDto.ts
+model/clientSuggestionDto.ts
+model/exportClientListDto.ts
 model/fullClientDto.ts
 model/generalClientInformation.ts
 model/idRepsponeDto.ts
@@ -22,7 +27,6 @@ model/idsRepsponeDto.ts
 model/loginDto.ts
 model/loginResponseDto.ts
 model/models.ts
-model/passwordResetDto.ts
 model/positionDto.ts
 ng-package.json
 tsconfig.json

@@ -3,6 +3,8 @@
 #
 # Usage example: /bin/sh ./git_push.sh wing328 openapi-petstore-perl "minor update" "gitlab.com"
 
+echo "start"
+
 git_user_id=$1
 git_repo_id=$2
 release_note=$3
@@ -28,14 +30,20 @@ if [ "$release_note" = "" ]; then
     echo "[INFO] No command line input provided. Set \$release_note to $release_note"
 fi
 
+echo "git init"
 # Initialize the local directory as a Git repository
 git init
+echo "git init done"
 
+echo "git add"
 # Adds the files in the local repository and stages them for commit.
 git add .
+echo "git add done"
 
+echo "git commit"
 # Commits the tracked changes and prepares them to be pushed to a remote repository.
 git commit -m "$release_note"
+echo "git commit done"
 
 # Sets the new remote
 git_remote=$(git remote)
@@ -50,7 +58,9 @@ if [ "$git_remote" = "" ]; then # git remote not defined
 
 fi
 
+echo "git pull"
 git pull origin master
+echo "git pull done"
 
 # Pushes (Forces) the changes in the local repository up to the remote repository
 echo "Git pushing to https://${git_host}/${git_user_id}/${git_repo_id}.git"
