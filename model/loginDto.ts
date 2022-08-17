@@ -13,4 +13,5 @@
 export interface LoginDto {
   email: string;
   password: string;
+  stayLoggedIn: boolean;
 }
