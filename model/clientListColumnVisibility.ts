@@ -10,7 +10,14 @@
  * Do not edit the class manually.
  */
 
-export interface LoginDto {
-  email: string;
-  password: string;
+export interface ClientListColumnVisibility {
+  clientAddress: boolean;
+  taxNumber: boolean;
+  registrationNumber: boolean;
+  email: boolean;
+  phone: boolean;
+  contactName: boolean;
+  clientType: boolean;
+  contactPosition: boolean;
+  website: boolean;
 }
