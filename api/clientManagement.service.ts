@@ -636,9 +636,9 @@ export class ClientManagementService {
     }
 
     return this.httpClient.get<FullClientDto>(
-      `${this.configuration.basePath}/v0/client-management/${encodeURIComponent(
-        String(id)
-      )}`,
+      `${
+        this.configuration.basePath
+      }/v0/client-management/client/${encodeURIComponent(String(id))}`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,

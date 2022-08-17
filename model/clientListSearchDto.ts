@@ -22,8 +22,8 @@ export interface ClientListSearchDto {
   contactPosition?: Array<string>;
   customer?: boolean;
   subcontractor?: boolean;
-  sortField: string;
-  sortOrder: number;
+  sortField?: string;
+  sortOrder?: number;
   first: number;
   rows: number;
 }
