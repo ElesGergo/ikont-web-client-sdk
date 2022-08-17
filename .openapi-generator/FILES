@@ -4,8 +4,8 @@ api.module.ts
 api/api.ts
 api/authentication.service.ts
 api/clientManagement.service.ts
-api/default.service.ts
 api/location.service.ts
+api/userSettings.service.ts
 configuration.ts
 encoder.ts
 git_push.sh

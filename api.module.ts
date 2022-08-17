@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { AuthenticationService } from './api/authentication.service';
 import { ClientManagementService } from './api/clientManagement.service';
-import { DefaultService } from './api/default.service';
 import { LocationService } from './api/location.service';
+import { UserSettingsService } from './api/userSettings.service';
 
 @NgModule({
   imports:      [],
