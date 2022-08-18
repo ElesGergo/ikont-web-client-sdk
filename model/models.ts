@@ -6,8 +6,6 @@ export * from './clientExistsResponseDto';
 export * from './clientListDto';
 export * from './fullClientDto';
 export * from './generalClientInformation';
-export * from './idRepsponeDto';
-export * from './idsRepsponeDto';
 export * from './loginDto';
 export * from './loginResponseDto';
 export * from './passwordResetDto';
