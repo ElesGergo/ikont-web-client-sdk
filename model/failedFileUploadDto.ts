@@ -10,8 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface LoginDto {
-  email: string;
-  password: string;
-  stayLoggedIn: boolean;
+export interface FailedFileUploadDto {
+  id: number;
+  message: string;
 }
