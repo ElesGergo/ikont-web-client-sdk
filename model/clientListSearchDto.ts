@@ -24,6 +24,6 @@ export interface ClientListSearchDto {
   subcontractor?: boolean;
   sortField: string;
   sortOrder: number;
-  first: number;
-  rows: number;
+  first?: number;
+  rows?: number;
 }

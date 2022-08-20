@@ -14,6 +14,7 @@ import { ClientListColumnVisibility } from './clientListColumnVisibility';
 
 export interface UserSettingsDto {
   clientListColumnVisibility: ClientListColumnVisibility;
-  listColumnSort: ListColumnSort;
+  clientListColumnSort: ListColumnSort;
   clientListColumnOrder: Array<string>;
+  clientListRowsPerPage: number;
 }

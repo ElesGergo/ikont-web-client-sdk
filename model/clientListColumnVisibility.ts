@@ -11,7 +11,8 @@
  */
 
 export interface ClientListColumnVisibility {
-  clientAddress: boolean;
+  clientName: boolean;
+  address: boolean;
   taxNumber: boolean;
   registrationNumber: boolean;
   email: boolean;
