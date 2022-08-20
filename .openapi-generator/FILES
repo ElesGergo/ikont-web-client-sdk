@@ -17,6 +17,8 @@ model/clientExistsResponseDto.ts
 model/clientListDto.ts
 model/fullClientDto.ts
 model/generalClientInformation.ts
+model/idRepsponeDto.ts
+model/idsRepsponeDto.ts
 model/loginDto.ts
 model/loginResponseDto.ts
 model/models.ts
