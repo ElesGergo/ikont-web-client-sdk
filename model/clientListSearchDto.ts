@@ -25,5 +25,5 @@ export interface ClientListSearchDto {
   sortField: string;
   sortOrder: number;
   first?: number;
-  rows: number;
+  rows?: number;
 }
