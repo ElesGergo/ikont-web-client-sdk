@@ -16,5 +16,4 @@ export interface UserSettingsDto {
   clientListColumnVisibility: ClientListColumnVisibility;
   clientListColumnSort: ListColumnSort;
   clientListColumnOrder: Array<string>;
-  clientListRowsPerPage: number;
 }

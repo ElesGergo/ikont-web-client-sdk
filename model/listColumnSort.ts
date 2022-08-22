@@ -11,6 +11,6 @@
  */
 
 export interface ListColumnSort {
-  sortField: string;
-  sortOrder: number;
+  field: string;
+  order: number;
 }
