@@ -20,6 +20,7 @@ model/clientListDto.ts
 model/clientListSearchDto.ts
 model/clientListSearchResponseDto.ts
 model/clientSuggestionDto.ts
+model/failedFileUploadDto.ts
 model/fullClientDto.ts
 model/generalClientInformation.ts
 model/idRepsponeDto.ts
@@ -28,6 +29,7 @@ model/listColumnSort.ts
 model/loginDto.ts
 model/loginResponseDto.ts
 model/models.ts
+model/passwordResetDto.ts
 model/positionDto.ts
 model/userSettingsDto.ts
 ng-package.json
