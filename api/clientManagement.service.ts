@@ -29,17 +29,19 @@ import { ClientDto } from '../model/clientDto';
 // @ts-ignore
 import { ClientExistsResponseDto } from '../model/clientExistsResponseDto';
 // @ts-ignore
+import { ClientHistoryResponse } from '../model/clientHistoryResponse';
+// @ts-ignore
+import { ClientHistorySuggestionDto } from '../model/clientHistorySuggestionDto';
+// @ts-ignore
 import { ClientListDto } from '../model/clientListDto';
-// @ts-ignore
-import { ClientListSearchDto } from '../model/clientListSearchDto';
-// @ts-ignore
-import { ClientListSearchResponseDto } from '../model/clientListSearchResponseDto';
 // @ts-ignore
 import { ClientSuggestionDto } from '../model/clientSuggestionDto';
 // @ts-ignore
 import { FailedFileUploadDto } from '../model/failedFileUploadDto';
 // @ts-ignore
 import { FullClientDto } from '../model/fullClientDto';
+// @ts-ignore
+import { HistoryEventType } from '../model/historyEventType';
 // @ts-ignore
 import { IdRepsponeDto } from '../model/idRepsponeDto';
 // @ts-ignore
@@ -330,10 +332,18 @@ export class ClientManagementService {
   }
 
   /**
+   * @param id
+   * @param searchValue
+   * @param filters
+   * @param sort
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public clientManagementControllerExportClientExample(
+  public clientManagementControllerExportClientHistory(
+    id: string,
+    searchValue?: string,
+    filters?: string,
+    sort?: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: {
@@ -341,7 +351,11 @@ export class ClientManagementService {
       context?: HttpContext;
     }
   ): Observable<object>;
-  public clientManagementControllerExportClientExample(
+  public clientManagementControllerExportClientHistory(
+    id: string,
+    searchValue?: string,
+    filters?: string,
+    sort?: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: {
@@ -349,7 +363,11 @@ export class ClientManagementService {
       context?: HttpContext;
     }
   ): Observable<HttpResponse<object>>;
-  public clientManagementControllerExportClientExample(
+  public clientManagementControllerExportClientHistory(
+    id: string,
+    searchValue?: string,
+    filters?: string,
+    sort?: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: {
@@ -357,7 +375,11 @@ export class ClientManagementService {
       context?: HttpContext;
     }
   ): Observable<HttpEvent<object>>;
-  public clientManagementControllerExportClientExample(
+  public clientManagementControllerExportClientHistory(
+    id: string,
+    searchValue?: string,
+    filters?: string,
+    sort?: string,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: {
@@ -365,6 +387,35 @@ export class ClientManagementService {
       context?: HttpContext;
     }
   ): Observable<any> {
+    if (id === null || id === undefined) {
+      throw new Error(
+        'Required parameter id was null or undefined when calling clientManagementControllerExportClientHistory.'
+      );
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (searchValue !== undefined && searchValue !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>searchValue,
+        'searchValue'
+      );
+    }
+    if (filters !== undefined && filters !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>filters,
+        'filters'
+      );
+    }
+    if (sort !== undefined && sort !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>sort,
+        'sort'
+      );
+    }
+
     let localVarHeaders = this.defaultHeaders;
 
     let localVarHttpHeaderAcceptSelected: string | undefined =
@@ -402,9 +453,14 @@ export class ClientManagementService {
     }
 
     return this.httpClient.get<object>(
-      `${this.configuration.basePath}/v0/client-management/example-file`,
+      `${
+        this.configuration.basePath
+      }/v0/client-management/client/${encodeURIComponent(
+        String(id)
+      )}/history-export`,
       {
         context: localVarHttpContext,
+        params: localVarQueryParameters,
         responseType: <any>responseType_,
         withCredentials: this.configuration.withCredentials,
         headers: localVarHeaders,
@@ -501,6 +557,227 @@ export class ClientManagementService {
       `${
         this.configuration.basePath
       }/v0/client-management/export-many/${encodeURIComponent(String(ids))}`,
+      {
+        context: localVarHttpContext,
+        responseType: <any>responseType_,
+        withCredentials: this.configuration.withCredentials,
+        headers: localVarHeaders,
+        observe: observe,
+        reportProgress: reportProgress,
+      }
+    );
+  }
+
+  /**
+   * @param searchValue
+   * @param filters
+   * @param page
+   * @param sort
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public clientManagementControllerExportClientsByFilter(
+    searchValue?: string,
+    filters?: string,
+    page?: string,
+    sort?: string,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/octet-stream';
+      context?: HttpContext;
+    }
+  ): Observable<object>;
+  public clientManagementControllerExportClientsByFilter(
+    searchValue?: string,
+    filters?: string,
+    page?: string,
+    sort?: string,
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/octet-stream';
+      context?: HttpContext;
+    }
+  ): Observable<HttpResponse<object>>;
+  public clientManagementControllerExportClientsByFilter(
+    searchValue?: string,
+    filters?: string,
+    page?: string,
+    sort?: string,
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/octet-stream';
+      context?: HttpContext;
+    }
+  ): Observable<HttpEvent<object>>;
+  public clientManagementControllerExportClientsByFilter(
+    searchValue?: string,
+    filters?: string,
+    page?: string,
+    sort?: string,
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: {
+      httpHeaderAccept?: 'application/octet-stream';
+      context?: HttpContext;
+    }
+  ): Observable<any> {
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (searchValue !== undefined && searchValue !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>searchValue,
+        'searchValue'
+      );
+    }
+    if (filters !== undefined && filters !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>filters,
+        'filters'
+      );
+    }
+    if (page !== undefined && page !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>page,
+        'page'
+      );
+    }
+    if (sort !== undefined && sort !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>sort,
+        'sort'
+      );
+    }
+
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined =
+      options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/octet-stream'];
+      localVarHttpHeaderAcceptSelected =
+        this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Accept',
+        localVarHttpHeaderAcceptSelected
+      );
+    }
+
+    let localVarHttpContext: HttpContext | undefined =
+      options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.get<object>(
+      `${this.configuration.basePath}/v0/client-management/export-many-by-filter`,
+      {
+        context: localVarHttpContext,
+        params: localVarQueryParameters,
+        responseType: <any>responseType_,
+        withCredentials: this.configuration.withCredentials,
+        headers: localVarHeaders,
+        observe: observe,
+        reportProgress: reportProgress,
+      }
+    );
+  }
+
+  /**
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public clientManagementControllerExportClientsExampleFile(
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/octet-stream';
+      context?: HttpContext;
+    }
+  ): Observable<object>;
+  public clientManagementControllerExportClientsExampleFile(
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/octet-stream';
+      context?: HttpContext;
+    }
+  ): Observable<HttpResponse<object>>;
+  public clientManagementControllerExportClientsExampleFile(
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/octet-stream';
+      context?: HttpContext;
+    }
+  ): Observable<HttpEvent<object>>;
+  public clientManagementControllerExportClientsExampleFile(
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: {
+      httpHeaderAccept?: 'application/octet-stream';
+      context?: HttpContext;
+    }
+  ): Observable<any> {
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined =
+      options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/octet-stream'];
+      localVarHttpHeaderAcceptSelected =
+        this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Accept',
+        localVarHttpHeaderAcceptSelected
+      );
+    }
+
+    let localVarHttpContext: HttpContext | undefined =
+      options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.get<object>(
+      `${this.configuration.basePath}/v0/client-management/example-file`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -614,29 +891,44 @@ export class ClientManagementService {
 
   /**
    * @param searchValue
+   * @param filters
+   * @param page
+   * @param sort
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public clientManagementControllerFindAll(
     searchValue?: string,
+    filters?: string,
+    page?: string,
+    sort?: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<Array<ClientListDto>>;
   public clientManagementControllerFindAll(
     searchValue?: string,
+    filters?: string,
+    page?: string,
+    sort?: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<Array<ClientListDto>>>;
   public clientManagementControllerFindAll(
     searchValue?: string,
+    filters?: string,
+    page?: string,
+    sort?: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<Array<ClientListDto>>>;
   public clientManagementControllerFindAll(
     searchValue?: string,
+    filters?: string,
+    page?: string,
+    sort?: string,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
@@ -647,6 +939,27 @@ export class ClientManagementService {
         localVarQueryParameters,
         <any>searchValue,
         'searchValue'
+      );
+    }
+    if (filters !== undefined && filters !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>filters,
+        'filters'
+      );
+    }
+    if (page !== undefined && page !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>page,
+        'page'
+      );
+    }
+    if (sort !== undefined && sort !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>sort,
+        'sort'
       );
     }
 
@@ -860,6 +1173,318 @@ export class ClientManagementService {
   }
 
   /**
+   * @param id
+   * @param searchValue
+   * @param filters
+   * @param sort
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public clientManagementControllerGetClientHistory(
+    id: string,
+    searchValue?: string,
+    filters?: string,
+    sort?: string,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<Array<ClientHistoryResponse>>;
+  public clientManagementControllerGetClientHistory(
+    id: string,
+    searchValue?: string,
+    filters?: string,
+    sort?: string,
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpResponse<Array<ClientHistoryResponse>>>;
+  public clientManagementControllerGetClientHistory(
+    id: string,
+    searchValue?: string,
+    filters?: string,
+    sort?: string,
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpEvent<Array<ClientHistoryResponse>>>;
+  public clientManagementControllerGetClientHistory(
+    id: string,
+    searchValue?: string,
+    filters?: string,
+    sort?: string,
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<any> {
+    if (id === null || id === undefined) {
+      throw new Error(
+        'Required parameter id was null or undefined when calling clientManagementControllerGetClientHistory.'
+      );
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (searchValue !== undefined && searchValue !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>searchValue,
+        'searchValue'
+      );
+    }
+    if (filters !== undefined && filters !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>filters,
+        'filters'
+      );
+    }
+    if (sort !== undefined && sort !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>sort,
+        'sort'
+      );
+    }
+
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined =
+      options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/json'];
+      localVarHttpHeaderAcceptSelected =
+        this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Accept',
+        localVarHttpHeaderAcceptSelected
+      );
+    }
+
+    let localVarHttpContext: HttpContext | undefined =
+      options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.get<Array<ClientHistoryResponse>>(
+      `${
+        this.configuration.basePath
+      }/v0/client-management/client/${encodeURIComponent(String(id))}/history`,
+      {
+        context: localVarHttpContext,
+        params: localVarQueryParameters,
+        responseType: <any>responseType_,
+        withCredentials: this.configuration.withCredentials,
+        headers: localVarHeaders,
+        observe: observe,
+        reportProgress: reportProgress,
+      }
+    );
+  }
+
+  /**
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public clientManagementControllerGetClientHistoryEventTypes(
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<Array<HistoryEventType>>;
+  public clientManagementControllerGetClientHistoryEventTypes(
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpResponse<Array<HistoryEventType>>>;
+  public clientManagementControllerGetClientHistoryEventTypes(
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpEvent<Array<HistoryEventType>>>;
+  public clientManagementControllerGetClientHistoryEventTypes(
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<any> {
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined =
+      options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/json'];
+      localVarHttpHeaderAcceptSelected =
+        this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Accept',
+        localVarHttpHeaderAcceptSelected
+      );
+    }
+
+    let localVarHttpContext: HttpContext | undefined =
+      options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.post<Array<HistoryEventType>>(
+      `${this.configuration.basePath}/v0/client-management/client/history-event-types`,
+      null,
+      {
+        context: localVarHttpContext,
+        responseType: <any>responseType_,
+        withCredentials: this.configuration.withCredentials,
+        headers: localVarHeaders,
+        observe: observe,
+        reportProgress: reportProgress,
+      }
+    );
+  }
+
+  /**
+   * @param id
+   * @param clientHistorySuggestionDto
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public clientManagementControllerGetClientHistorySuggestion(
+    id: string,
+    clientHistorySuggestionDto: ClientHistorySuggestionDto,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<Array<string>>;
+  public clientManagementControllerGetClientHistorySuggestion(
+    id: string,
+    clientHistorySuggestionDto: ClientHistorySuggestionDto,
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpResponse<Array<string>>>;
+  public clientManagementControllerGetClientHistorySuggestion(
+    id: string,
+    clientHistorySuggestionDto: ClientHistorySuggestionDto,
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpEvent<Array<string>>>;
+  public clientManagementControllerGetClientHistorySuggestion(
+    id: string,
+    clientHistorySuggestionDto: ClientHistorySuggestionDto,
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<any> {
+    if (id === null || id === undefined) {
+      throw new Error(
+        'Required parameter id was null or undefined when calling clientManagementControllerGetClientHistorySuggestion.'
+      );
+    }
+    if (
+      clientHistorySuggestionDto === null ||
+      clientHistorySuggestionDto === undefined
+    ) {
+      throw new Error(
+        'Required parameter clientHistorySuggestionDto was null or undefined when calling clientManagementControllerGetClientHistorySuggestion.'
+      );
+    }
+
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined =
+      options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/json'];
+      localVarHttpHeaderAcceptSelected =
+        this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Accept',
+        localVarHttpHeaderAcceptSelected
+      );
+    }
+
+    let localVarHttpContext: HttpContext | undefined =
+      options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    // to determine the Content-Type header
+    const consumes: string[] = ['application/json'];
+    const httpContentTypeSelected: string | undefined =
+      this.configuration.selectHeaderContentType(consumes);
+    if (httpContentTypeSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Content-Type',
+        httpContentTypeSelected
+      );
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.post<Array<string>>(
+      `${
+        this.configuration.basePath
+      }/v0/client-management/client/${encodeURIComponent(
+        String(id)
+      )}/history-suggestion`,
+      clientHistorySuggestionDto,
+      {
+        context: localVarHttpContext,
+        responseType: <any>responseType_,
+        withCredentials: this.configuration.withCredentials,
+        headers: localVarHeaders,
+        observe: observe,
+        reportProgress: reportProgress,
+      }
+    );
+  }
+
+  /**
    * @param clientSuggestionDto
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
@@ -944,102 +1569,6 @@ export class ClientManagementService {
     return this.httpClient.post<Array<string>>(
       `${this.configuration.basePath}/v0/client-management/client-suggestion`,
       clientSuggestionDto,
-      {
-        context: localVarHttpContext,
-        responseType: <any>responseType_,
-        withCredentials: this.configuration.withCredentials,
-        headers: localVarHeaders,
-        observe: observe,
-        reportProgress: reportProgress,
-      }
-    );
-  }
-
-  /**
-   * @param clientListSearchDto
-   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-   * @param reportProgress flag to report request and response progress.
-   */
-  public clientManagementControllerLazyLoad(
-    clientListSearchDto: ClientListSearchDto,
-    observe?: 'body',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<ClientListSearchResponseDto>;
-  public clientManagementControllerLazyLoad(
-    clientListSearchDto: ClientListSearchDto,
-    observe?: 'response',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<ClientListSearchResponseDto>>;
-  public clientManagementControllerLazyLoad(
-    clientListSearchDto: ClientListSearchDto,
-    observe?: 'events',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<ClientListSearchResponseDto>>;
-  public clientManagementControllerLazyLoad(
-    clientListSearchDto: ClientListSearchDto,
-    observe: any = 'body',
-    reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<any> {
-    if (clientListSearchDto === null || clientListSearchDto === undefined) {
-      throw new Error(
-        'Required parameter clientListSearchDto was null or undefined when calling clientManagementControllerLazyLoad.'
-      );
-    }
-
-    let localVarHeaders = this.defaultHeaders;
-
-    let localVarHttpHeaderAcceptSelected: string | undefined =
-      options && options.httpHeaderAccept;
-    if (localVarHttpHeaderAcceptSelected === undefined) {
-      // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['application/json'];
-      localVarHttpHeaderAcceptSelected =
-        this.configuration.selectHeaderAccept(httpHeaderAccepts);
-    }
-    if (localVarHttpHeaderAcceptSelected !== undefined) {
-      localVarHeaders = localVarHeaders.set(
-        'Accept',
-        localVarHttpHeaderAcceptSelected
-      );
-    }
-
-    let localVarHttpContext: HttpContext | undefined =
-      options && options.context;
-    if (localVarHttpContext === undefined) {
-      localVarHttpContext = new HttpContext();
-    }
-
-    // to determine the Content-Type header
-    const consumes: string[] = ['application/json'];
-    const httpContentTypeSelected: string | undefined =
-      this.configuration.selectHeaderContentType(consumes);
-    if (httpContentTypeSelected !== undefined) {
-      localVarHeaders = localVarHeaders.set(
-        'Content-Type',
-        httpContentTypeSelected
-      );
-    }
-
-    let responseType_: 'text' | 'json' | 'blob' = 'json';
-    if (localVarHttpHeaderAcceptSelected) {
-      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-        responseType_ = 'text';
-      } else if (
-        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
-      ) {
-        responseType_ = 'json';
-      } else {
-        responseType_ = 'blob';
-      }
-    }
-
-    return this.httpClient.post<ClientListSearchResponseDto>(
-      `${this.configuration.basePath}/v0/client-management/lazy-load`,
-      clientListSearchDto,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,

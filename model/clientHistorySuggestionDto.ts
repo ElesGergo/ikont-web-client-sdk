@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface PositionDto {
-  label: string;
-  value: string;
+export interface ClientHistorySuggestionDto {
+  field: string;
+  value: string | null;
 }

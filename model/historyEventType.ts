@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface PositionDto {
+export interface HistoryEventType {
   label: string;
   value: string;
 }

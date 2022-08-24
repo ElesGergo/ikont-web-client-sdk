@@ -10,7 +10,10 @@
  * Do not edit the class manually.
  */
 
-export interface PositionDto {
-  label: string;
-  value: string;
+export interface ClientHistoryResponse {
+  date: string;
+  eventDescription: string;
+  eventType: string;
+  user: string;
+  id: number;
 }
