@@ -476,7 +476,7 @@ export class ClientManagementService {
    * @param reportProgress flag to report request and response progress.
    */
   public clientManagementControllerExportClients(
-    ids: string,
+    ids: Array<string>,
     observe?: 'body',
     reportProgress?: boolean,
     options?: {
@@ -485,7 +485,7 @@ export class ClientManagementService {
     }
   ): Observable<object>;
   public clientManagementControllerExportClients(
-    ids: string,
+    ids: Array<string>,
     observe?: 'response',
     reportProgress?: boolean,
     options?: {
@@ -494,7 +494,7 @@ export class ClientManagementService {
     }
   ): Observable<HttpResponse<object>>;
   public clientManagementControllerExportClients(
-    ids: string,
+    ids: Array<string>,
     observe?: 'events',
     reportProgress?: boolean,
     options?: {
@@ -503,7 +503,7 @@ export class ClientManagementService {
     }
   ): Observable<HttpEvent<object>>;
   public clientManagementControllerExportClients(
-    ids: string,
+    ids: Array<string>,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: {
@@ -515,6 +515,17 @@ export class ClientManagementService {
       throw new Error(
         'Required parameter ids was null or undefined when calling clientManagementControllerExportClients.'
       );
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (ids) {
+      ids.forEach((element) => {
+        localVarQueryParameters = this.addToHttpParams(
+          localVarQueryParameters,
+          <any>element,
+          'ids'
+        );
+      });
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -554,11 +565,10 @@ export class ClientManagementService {
     }
 
     return this.httpClient.get<object>(
-      `${
-        this.configuration.basePath
-      }/v0/client-management/export-many/${encodeURIComponent(String(ids))}`,
+      `${this.configuration.basePath}/v0/client-management/export-many`,
       {
         context: localVarHttpContext,
+        params: localVarQueryParameters,
         responseType: <any>responseType_,
         withCredentials: this.configuration.withCredentials,
         headers: localVarHeaders,
