@@ -342,8 +342,8 @@ export class ClientManagementService {
   public clientManagementControllerExportClientHistory(
     id: string,
     searchValue?: string,
-    filters?: any,
-    sort?: any,
+    filters?: string,
+    sort?: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: {
@@ -354,8 +354,8 @@ export class ClientManagementService {
   public clientManagementControllerExportClientHistory(
     id: string,
     searchValue?: string,
-    filters?: any,
-    sort?: any,
+    filters?: string,
+    sort?: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: {
@@ -366,8 +366,8 @@ export class ClientManagementService {
   public clientManagementControllerExportClientHistory(
     id: string,
     searchValue?: string,
-    filters?: any,
-    sort?: any,
+    filters?: string,
+    sort?: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: {
@@ -378,8 +378,8 @@ export class ClientManagementService {
   public clientManagementControllerExportClientHistory(
     id: string,
     searchValue?: string,
-    filters?: any,
-    sort?: any,
+    filters?: string,
+    sort?: string,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: {
@@ -569,10 +569,12 @@ export class ClientManagementService {
   }
 
   /**
+   * @param filters
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public clientManagementControllerExportClientsByFilter(
+    filters: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: {
@@ -581,6 +583,7 @@ export class ClientManagementService {
     }
   ): Observable<object>;
   public clientManagementControllerExportClientsByFilter(
+    filters: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: {
@@ -589,6 +592,7 @@ export class ClientManagementService {
     }
   ): Observable<HttpResponse<object>>;
   public clientManagementControllerExportClientsByFilter(
+    filters: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: {
@@ -597,6 +601,7 @@ export class ClientManagementService {
     }
   ): Observable<HttpEvent<object>>;
   public clientManagementControllerExportClientsByFilter(
+    filters: string,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: {
@@ -604,6 +609,21 @@ export class ClientManagementService {
       context?: HttpContext;
     }
   ): Observable<any> {
+    if (filters === null || filters === undefined) {
+      throw new Error(
+        'Required parameter filters was null or undefined when calling clientManagementControllerExportClientsByFilter.'
+      );
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (filters !== undefined && filters !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>filters,
+        'filters'
+      );
+    }
+
     let localVarHeaders = this.defaultHeaders;
 
     let localVarHttpHeaderAcceptSelected: string | undefined =
@@ -641,9 +661,10 @@ export class ClientManagementService {
     }
 
     return this.httpClient.get<object>(
-      `${this.configuration.basePath}/v0/client-management/export-many-by-filter`,
+      `${this.configuration.basePath}/v0/client-management/export-by-filter`,
       {
         context: localVarHttpContext,
+        params: localVarQueryParameters,
         responseType: <any>responseType_,
         withCredentials: this.configuration.withCredentials,
         headers: localVarHeaders,
@@ -1132,8 +1153,8 @@ export class ClientManagementService {
   public clientManagementControllerGetClientHistory(
     id: string,
     searchValue?: string,
-    filters?: any,
-    sort?: any,
+    filters?: string,
+    sort?: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
@@ -1141,8 +1162,8 @@ export class ClientManagementService {
   public clientManagementControllerGetClientHistory(
     id: string,
     searchValue?: string,
-    filters?: any,
-    sort?: any,
+    filters?: string,
+    sort?: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
@@ -1150,8 +1171,8 @@ export class ClientManagementService {
   public clientManagementControllerGetClientHistory(
     id: string,
     searchValue?: string,
-    filters?: any,
-    sort?: any,
+    filters?: string,
+    sort?: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
@@ -1159,8 +1180,8 @@ export class ClientManagementService {
   public clientManagementControllerGetClientHistory(
     id: string,
     searchValue?: string,
-    filters?: any,
-    sort?: any,
+    filters?: string,
+    sort?: string,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
