@@ -11,5 +11,6 @@
  */
 
 export interface PositionDto {
+  label: string;
   value: string;
 }
