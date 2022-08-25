@@ -9,16 +9,17 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ClientContact } from './clientContact';
-import { ClientAddress } from './clientAddress';
-import { GeneralClientInformation } from './generalClientInformation';
 
 export interface ClientListDto {
   id: number;
-  general: GeneralClientInformation;
-  addresses: ClientAddress;
-  contact: ClientContact;
+  generalRegistrationNumber: string;
+  generalTaxNumber: string;
+  generalName: string;
+  generalType: Array<boolean>;
+  contactName: string;
+  contactEmail: string;
+  contactPosition: string;
+  contactPhone: string;
   website: string;
   address: string;
-  addressType: string;
 }
