@@ -9,12 +9,15 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { CustomerAccountListColumnVisibility } from './customerAccountListColumnVisibility';
 import { ListColumnSort } from './listColumnSort';
 import { ClientListColumnVisibility } from './clientListColumnVisibility';
 
 export interface UserSettingsDto {
+  customerAccountListColumnVisibility: CustomerAccountListColumnVisibility;
+  customerAccountListColumnSort: ListColumnSort;
+  customerAccountListColumnOrder: Array<string>;
   clientListColumnVisibility: ClientListColumnVisibility;
   clientListColumnSort: ListColumnSort;
   clientListColumnOrder: Array<string>;
-  clientListRowsPerPage: number;
 }

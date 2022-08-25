@@ -114,37 +114,37 @@ export class UserSettingsService {
   }
 
   /**
-   * @param userSettingsDto
+   * @param tableName
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public userSettingsControllerCreate(
-    userSettingsDto: UserSettingsDto,
+  public userSettingsControllerGetUserTableSettings(
+    tableName: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<UserSettingsDto>;
-  public userSettingsControllerCreate(
-    userSettingsDto: UserSettingsDto,
+  public userSettingsControllerGetUserTableSettings(
+    tableName: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<UserSettingsDto>>;
-  public userSettingsControllerCreate(
-    userSettingsDto: UserSettingsDto,
+  public userSettingsControllerGetUserTableSettings(
+    tableName: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<UserSettingsDto>>;
-  public userSettingsControllerCreate(
-    userSettingsDto: UserSettingsDto,
+  public userSettingsControllerGetUserTableSettings(
+    tableName: string,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
-    if (userSettingsDto === null || userSettingsDto === undefined) {
+    if (tableName === null || tableName === undefined) {
       throw new Error(
-        'Required parameter userSettingsDto was null or undefined when calling userSettingsControllerCreate.'
+        'Required parameter tableName was null or undefined when calling userSettingsControllerGetUserTableSettings.'
       );
     }
 
@@ -171,17 +171,6 @@ export class UserSettingsService {
       localVarHttpContext = new HttpContext();
     }
 
-    // to determine the Content-Type header
-    const consumes: string[] = ['application/json'];
-    const httpContentTypeSelected: string | undefined =
-      this.configuration.selectHeaderContentType(consumes);
-    if (httpContentTypeSelected !== undefined) {
-      localVarHeaders = localVarHeaders.set(
-        'Content-Type',
-        httpContentTypeSelected
-      );
-    }
-
     let responseType_: 'text' | 'json' | 'blob' = 'json';
     if (localVarHttpHeaderAcceptSelected) {
       if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
@@ -195,9 +184,10 @@ export class UserSettingsService {
       }
     }
 
-    return this.httpClient.post<UserSettingsDto>(
-      `${this.configuration.basePath}/v0/user-settings`,
-      userSettingsDto,
+    return this.httpClient.get<UserSettingsDto>(
+      `${
+        this.configuration.basePath
+      }/v0/user-settings/table/${encodeURIComponent(String(tableName))}`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -210,37 +200,47 @@ export class UserSettingsService {
   }
 
   /**
+   * @param tableName
    * @param userSettingsDto
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public userSettingsControllerCreateOrUpdate(
+  public userSettingsControllerPutUserTableSettings(
+    tableName: string,
     userSettingsDto: UserSettingsDto,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<UserSettingsDto>;
-  public userSettingsControllerCreateOrUpdate(
+  public userSettingsControllerPutUserTableSettings(
+    tableName: string,
     userSettingsDto: UserSettingsDto,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<UserSettingsDto>>;
-  public userSettingsControllerCreateOrUpdate(
+  public userSettingsControllerPutUserTableSettings(
+    tableName: string,
     userSettingsDto: UserSettingsDto,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<UserSettingsDto>>;
-  public userSettingsControllerCreateOrUpdate(
+  public userSettingsControllerPutUserTableSettings(
+    tableName: string,
     userSettingsDto: UserSettingsDto,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
+    if (tableName === null || tableName === undefined) {
+      throw new Error(
+        'Required parameter tableName was null or undefined when calling userSettingsControllerPutUserTableSettings.'
+      );
+    }
     if (userSettingsDto === null || userSettingsDto === undefined) {
       throw new Error(
-        'Required parameter userSettingsDto was null or undefined when calling userSettingsControllerCreateOrUpdate.'
+        'Required parameter userSettingsDto was null or undefined when calling userSettingsControllerPutUserTableSettings.'
       );
     }
 
@@ -292,176 +292,9 @@ export class UserSettingsService {
     }
 
     return this.httpClient.put<UserSettingsDto>(
-      `${this.configuration.basePath}/v0/user-settings`,
-      userSettingsDto,
-      {
-        context: localVarHttpContext,
-        responseType: <any>responseType_,
-        withCredentials: this.configuration.withCredentials,
-        headers: localVarHeaders,
-        observe: observe,
-        reportProgress: reportProgress,
-      }
-    );
-  }
-
-  /**
-   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-   * @param reportProgress flag to report request and response progress.
-   */
-  public userSettingsControllerGet(
-    observe?: 'body',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<UserSettingsDto>;
-  public userSettingsControllerGet(
-    observe?: 'response',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<UserSettingsDto>>;
-  public userSettingsControllerGet(
-    observe?: 'events',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<UserSettingsDto>>;
-  public userSettingsControllerGet(
-    observe: any = 'body',
-    reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<any> {
-    let localVarHeaders = this.defaultHeaders;
-
-    let localVarHttpHeaderAcceptSelected: string | undefined =
-      options && options.httpHeaderAccept;
-    if (localVarHttpHeaderAcceptSelected === undefined) {
-      // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['application/json'];
-      localVarHttpHeaderAcceptSelected =
-        this.configuration.selectHeaderAccept(httpHeaderAccepts);
-    }
-    if (localVarHttpHeaderAcceptSelected !== undefined) {
-      localVarHeaders = localVarHeaders.set(
-        'Accept',
-        localVarHttpHeaderAcceptSelected
-      );
-    }
-
-    let localVarHttpContext: HttpContext | undefined =
-      options && options.context;
-    if (localVarHttpContext === undefined) {
-      localVarHttpContext = new HttpContext();
-    }
-
-    let responseType_: 'text' | 'json' | 'blob' = 'json';
-    if (localVarHttpHeaderAcceptSelected) {
-      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-        responseType_ = 'text';
-      } else if (
-        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
-      ) {
-        responseType_ = 'json';
-      } else {
-        responseType_ = 'blob';
-      }
-    }
-
-    return this.httpClient.get<UserSettingsDto>(
-      `${this.configuration.basePath}/v0/user-settings`,
-      {
-        context: localVarHttpContext,
-        responseType: <any>responseType_,
-        withCredentials: this.configuration.withCredentials,
-        headers: localVarHeaders,
-        observe: observe,
-        reportProgress: reportProgress,
-      }
-    );
-  }
-
-  /**
-   * @param userSettingsDto
-   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-   * @param reportProgress flag to report request and response progress.
-   */
-  public userSettingsControllerUpdate(
-    userSettingsDto: UserSettingsDto,
-    observe?: 'body',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<UserSettingsDto>;
-  public userSettingsControllerUpdate(
-    userSettingsDto: UserSettingsDto,
-    observe?: 'response',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<UserSettingsDto>>;
-  public userSettingsControllerUpdate(
-    userSettingsDto: UserSettingsDto,
-    observe?: 'events',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<UserSettingsDto>>;
-  public userSettingsControllerUpdate(
-    userSettingsDto: UserSettingsDto,
-    observe: any = 'body',
-    reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<any> {
-    if (userSettingsDto === null || userSettingsDto === undefined) {
-      throw new Error(
-        'Required parameter userSettingsDto was null or undefined when calling userSettingsControllerUpdate.'
-      );
-    }
-
-    let localVarHeaders = this.defaultHeaders;
-
-    let localVarHttpHeaderAcceptSelected: string | undefined =
-      options && options.httpHeaderAccept;
-    if (localVarHttpHeaderAcceptSelected === undefined) {
-      // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['application/json'];
-      localVarHttpHeaderAcceptSelected =
-        this.configuration.selectHeaderAccept(httpHeaderAccepts);
-    }
-    if (localVarHttpHeaderAcceptSelected !== undefined) {
-      localVarHeaders = localVarHeaders.set(
-        'Accept',
-        localVarHttpHeaderAcceptSelected
-      );
-    }
-
-    let localVarHttpContext: HttpContext | undefined =
-      options && options.context;
-    if (localVarHttpContext === undefined) {
-      localVarHttpContext = new HttpContext();
-    }
-
-    // to determine the Content-Type header
-    const consumes: string[] = ['application/json'];
-    const httpContentTypeSelected: string | undefined =
-      this.configuration.selectHeaderContentType(consumes);
-    if (httpContentTypeSelected !== undefined) {
-      localVarHeaders = localVarHeaders.set(
-        'Content-Type',
-        httpContentTypeSelected
-      );
-    }
-
-    let responseType_: 'text' | 'json' | 'blob' = 'json';
-    if (localVarHttpHeaderAcceptSelected) {
-      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-        responseType_ = 'text';
-      } else if (
-        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
-      ) {
-        responseType_ = 'json';
-      } else {
-        responseType_ = 'blob';
-      }
-    }
-
-    return this.httpClient.patch<UserSettingsDto>(
-      `${this.configuration.basePath}/v0/user-settings`,
+      `${
+        this.configuration.basePath
+      }/v0/user-settings/table/${encodeURIComponent(String(tableName))}`,
       userSettingsDto,
       {
         context: localVarHttpContext,

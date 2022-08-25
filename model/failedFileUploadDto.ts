@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface ListColumnSort {
-  field: string;
-  order: number;
+export interface FailedFileUploadDto {
+  id: number;
+  message: string;
 }
