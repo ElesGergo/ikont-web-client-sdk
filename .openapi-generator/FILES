@@ -17,7 +17,6 @@ model/clientDto.ts
 model/clientExistsResponseDto.ts
 model/clientHistoryResponse.ts
 model/clientHistorySuggestionDto.ts
-model/clientListColumnVisibility.ts
 model/clientListDto.ts
 model/clientSuggestionDto.ts
 model/failedFileUploadDto.ts

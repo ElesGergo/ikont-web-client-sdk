@@ -10,10 +10,8 @@
  * Do not edit the class manually.
  */
 import { ListColumnSort } from './listColumnSort';
-import { ClientListColumnVisibility } from './clientListColumnVisibility';
 
 export interface UserSettingsDto {
-  clientListColumnVisibility: ClientListColumnVisibility;
-  clientListColumnSort: ListColumnSort;
-  clientListColumnOrder: Array<string>;
+  listColumnSort: ListColumnSort;
+  listColumnOrder: Array<string>;
 }

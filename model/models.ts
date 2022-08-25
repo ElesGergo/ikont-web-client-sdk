@@ -5,7 +5,6 @@ export * from './clientDto';
 export * from './clientExistsResponseDto';
 export * from './clientHistoryResponse';
 export * from './clientHistorySuggestionDto';
-export * from './clientListColumnVisibility';
 export * from './clientListDto';
 export * from './clientSuggestionDto';
 export * from './failedFileUploadDto';
