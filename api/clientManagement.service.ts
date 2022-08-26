@@ -33,8 +33,6 @@ import { ClientHistoryResponse } from '../model/clientHistoryResponse';
 // @ts-ignore
 import { ClientHistorySuggestionDto } from '../model/clientHistorySuggestionDto';
 // @ts-ignore
-import { ClientListDto } from '../model/clientListDto';
-// @ts-ignore
 import { ClientSuggestionDto } from '../model/clientSuggestionDto';
 // @ts-ignore
 import { FailedFileUploadDto } from '../model/failedFileUploadDto';
@@ -46,6 +44,8 @@ import { HistoryEventType } from '../model/historyEventType';
 import { IdRepsponeDto } from '../model/idRepsponeDto';
 // @ts-ignore
 import { IdsRepsponeDto } from '../model/idsRepsponeDto';
+// @ts-ignore
+import { PageableClientListDto } from '../model/pageableClientListDto';
 // @ts-ignore
 import { PositionDto } from '../model/positionDto';
 
@@ -885,7 +885,7 @@ export class ClientManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<Array<ClientListDto>>;
+  ): Observable<PageableClientListDto>;
   public clientManagementControllerFindAll(
     searchValue?: string,
     filters?: string,
@@ -894,7 +894,7 @@ export class ClientManagementService {
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<Array<ClientListDto>>>;
+  ): Observable<HttpResponse<PageableClientListDto>>;
   public clientManagementControllerFindAll(
     searchValue?: string,
     filters?: string,
@@ -903,7 +903,7 @@ export class ClientManagementService {
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<Array<ClientListDto>>>;
+  ): Observable<HttpEvent<PageableClientListDto>>;
   public clientManagementControllerFindAll(
     searchValue?: string,
     filters?: string,
@@ -979,7 +979,7 @@ export class ClientManagementService {
       }
     }
 
-    return this.httpClient.get<Array<ClientListDto>>(
+    return this.httpClient.get<PageableClientListDto>(
       `${this.configuration.basePath}/v0/client-management`,
       {
         context: localVarHttpContext,

@@ -9,18 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { GeneralType } from './generalType';
+import { ClientListDto } from './clientListDto';
 
-export interface ClientListDto {
-  id: number;
-  generalRegistrationNumber: string;
-  generalTaxNumber: string;
-  generalName: string;
-  generalType: GeneralType;
-  contactName: string;
-  contactEmail: string;
-  contactPosition: string;
-  contactPhone: string;
-  website: string;
-  address: string;
+export interface PageableClientListDto {
+  list: Array<ClientListDto>;
+  totalRecords: number;
 }

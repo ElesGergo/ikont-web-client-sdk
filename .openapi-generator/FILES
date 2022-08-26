@@ -22,6 +22,7 @@ model/clientSuggestionDto.ts
 model/failedFileUploadDto.ts
 model/fullClientDto.ts
 model/generalClientInformation.ts
+model/generalType.ts
 model/historyEventType.ts
 model/idRepsponeDto.ts
 model/idsRepsponeDto.ts
@@ -29,6 +30,7 @@ model/listColumnSort.ts
 model/loginDto.ts
 model/loginResponseDto.ts
 model/models.ts
+model/pageableClientListDto.ts
 model/passwordResetDto.ts
 model/positionDto.ts
 model/userSettingsDto.ts
