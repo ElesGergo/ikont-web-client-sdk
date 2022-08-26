@@ -35,8 +35,6 @@ model/pageableClientListDto.ts
 model/passwordResetDto.ts
 model/positionDto.ts
 model/userSettingsDto.ts
-model/userSettingsDtoClientListColumnSort.ts
-model/userSettingsDtoClientListColumnVisibility.ts
 ng-package.json
 tsconfig.json
 variables.ts

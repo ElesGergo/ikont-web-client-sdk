@@ -22,5 +22,3 @@ export * from './pageableClientListDto';
 export * from './passwordResetDto';
 export * from './positionDto';
 export * from './userSettingsDto';
-export * from './userSettingsDtoClientListColumnSort';
-export * from './userSettingsDtoClientListColumnVisibility';
