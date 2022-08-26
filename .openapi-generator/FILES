@@ -4,6 +4,7 @@ api.module.ts
 api/api.ts
 api/authentication.service.ts
 api/clientManagement.service.ts
+api/customerManagement.service.ts
 api/location.service.ts
 api/userSettings.service.ts
 configuration.ts
@@ -19,6 +20,9 @@ model/clientHistoryResponse.ts
 model/clientHistorySuggestionDto.ts
 model/clientListDto.ts
 model/clientSuggestionDto.ts
+model/customerDto.ts
+model/customerHistoryResponse.ts
+model/customerHistorySuggestionDto.ts
 model/failedFileUploadDto.ts
 model/fullClientDto.ts
 model/generalClientInformation.ts
@@ -31,6 +35,7 @@ model/loginDto.ts
 model/loginResponseDto.ts
 model/models.ts
 model/pageableClientListDto.ts
+model/pageableCustomerListDto.ts
 model/passwordResetDto.ts
 model/positionDto.ts
 model/userSettingsDto.ts

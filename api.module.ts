@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { AuthenticationService } from './api/authentication.service';
 import { ClientManagementService } from './api/clientManagement.service';
+import { CustomerManagementService } from './api/customerManagement.service';
 import { LocationService } from './api/location.service';
 import { UserSettingsService } from './api/userSettings.service';
 
