@@ -9,8 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { ClientListColumnVisibility } from './clientListColumnVisibility';
 
-export interface ClientListColumnVisibility {
+export interface UserSettingsDtoClientListColumnVisibility {
   generalName: boolean;
   address: boolean;
   generalTaxNumber: boolean;

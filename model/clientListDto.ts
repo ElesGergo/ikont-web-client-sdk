@@ -9,13 +9,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { GeneralType } from './generalType';
 
 export interface ClientListDto {
   id: number;
   generalRegistrationNumber: string;
   generalTaxNumber: string;
   generalName: string;
-  generalType: Array<boolean>;
+  generalType: GeneralType;
   contactName: string;
   contactEmail: string;
   contactPosition: string;

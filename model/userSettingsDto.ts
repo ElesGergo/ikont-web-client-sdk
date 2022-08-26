@@ -9,11 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ListColumnSort } from './listColumnSort';
-import { ClientListColumnVisibility } from './clientListColumnVisibility';
+import { UserSettingsDtoClientListColumnSort } from './userSettingsDtoClientListColumnSort';
+import { UserSettingsDtoClientListColumnVisibility } from './userSettingsDtoClientListColumnVisibility';
 
 export interface UserSettingsDto {
-  clientListColumnVisibility: ClientListColumnVisibility;
-  clientListColumnSort: ListColumnSort;
-  clientListColumnOrder: Array<string>;
+  clientListColumnVisibility: UserSettingsDtoClientListColumnVisibility | null;
+  clientListColumnSort: UserSettingsDtoClientListColumnSort | null;
+  clientListColumnOrder: Array<string> | null;
 }

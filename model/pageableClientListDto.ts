@@ -9,16 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { ClientListDto } from './clientListDto';
 
-export interface ClientListColumnVisibility {
-  generalName: boolean;
-  address: boolean;
-  generalTaxNumber: boolean;
-  generalRegistrationNumber: boolean;
-  contactEmail: boolean;
-  contactPhone: boolean;
-  contactName: boolean;
-  generalType: boolean;
-  contactPosition: boolean;
-  website: boolean;
+export interface PageableClientListDto {
+  list: Array<ClientListDto>;
+  totalRecords: number;
 }

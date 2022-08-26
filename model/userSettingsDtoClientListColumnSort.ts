@@ -9,16 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { ListColumnSort } from './listColumnSort';
 
-export interface ClientListColumnVisibility {
-  generalName: boolean;
-  address: boolean;
-  generalTaxNumber: boolean;
-  generalRegistrationNumber: boolean;
-  contactEmail: boolean;
-  contactPhone: boolean;
-  contactName: boolean;
-  generalType: boolean;
-  contactPosition: boolean;
-  website: boolean;
+export interface UserSettingsDtoClientListColumnSort {
+  field: string;
+  order: number;
 }

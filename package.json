@@ -1,6 +1,6 @@
 {
   "name": "@elesgergo/ikont-web-client-sdk",
-  "version": "0.0.71",
+  "version": "0.0.72",
   "description": "OpenAPI client for ik-web-client",
   "author": "OpenAPI-Generator Contributors",
   "publishConfig": {

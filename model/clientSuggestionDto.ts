@@ -16,22 +16,22 @@ export interface ClientSuggestionDto {
 }
 export namespace ClientSuggestionDto {
   export type FieldEnum =
-    | 'clientName'
+    | 'generalName'
     | 'address'
-    | 'taxNumber'
-    | 'registrationNumber'
-    | 'email'
-    | 'phone'
+    | 'generalTaxNumber'
+    | 'generalRegistrationNumber'
+    | 'contactEmail'
+    | 'contactPhone'
     | 'contactName'
     | 'contactPosition'
     | 'website';
   export const FieldEnum = {
-    ClientName: 'clientName' as FieldEnum,
+    GeneralName: 'generalName' as FieldEnum,
     Address: 'address' as FieldEnum,
-    TaxNumber: 'taxNumber' as FieldEnum,
-    RegistrationNumber: 'registrationNumber' as FieldEnum,
-    Email: 'email' as FieldEnum,
-    Phone: 'phone' as FieldEnum,
+    GeneralTaxNumber: 'generalTaxNumber' as FieldEnum,
+    GeneralRegistrationNumber: 'generalRegistrationNumber' as FieldEnum,
+    ContactEmail: 'contactEmail' as FieldEnum,
+    ContactPhone: 'contactPhone' as FieldEnum,
     ContactName: 'contactName' as FieldEnum,
     ContactPosition: 'contactPosition' as FieldEnum,
     Website: 'website' as FieldEnum,
