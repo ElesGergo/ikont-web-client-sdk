@@ -138,7 +138,7 @@ export class UserManagementService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public userManagementControllerExportClients(
+  public userManagementControllerExport(
     ids: Array<string>,
     observe?: 'body',
     reportProgress?: boolean,
@@ -147,7 +147,7 @@ export class UserManagementService {
       context?: HttpContext;
     }
   ): Observable<object>;
-  public userManagementControllerExportClients(
+  public userManagementControllerExport(
     ids: Array<string>,
     observe?: 'response',
     reportProgress?: boolean,
@@ -156,7 +156,7 @@ export class UserManagementService {
       context?: HttpContext;
     }
   ): Observable<HttpResponse<object>>;
-  public userManagementControllerExportClients(
+  public userManagementControllerExport(
     ids: Array<string>,
     observe?: 'events',
     reportProgress?: boolean,
@@ -165,7 +165,7 @@ export class UserManagementService {
       context?: HttpContext;
     }
   ): Observable<HttpEvent<object>>;
-  public userManagementControllerExportClients(
+  public userManagementControllerExport(
     ids: Array<string>,
     observe: any = 'body',
     reportProgress: boolean = false,
@@ -176,7 +176,7 @@ export class UserManagementService {
   ): Observable<any> {
     if (ids === null || ids === undefined) {
       throw new Error(
-        'Required parameter ids was null or undefined when calling userManagementControllerExportClients.'
+        'Required parameter ids was null or undefined when calling userManagementControllerExport.'
       );
     }
 
@@ -246,7 +246,7 @@ export class UserManagementService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public userManagementControllerExportClientsByFilter(
+  public userManagementControllerExportByFilter(
     filters: string,
     observe?: 'body',
     reportProgress?: boolean,
@@ -255,7 +255,7 @@ export class UserManagementService {
       context?: HttpContext;
     }
   ): Observable<object>;
-  public userManagementControllerExportClientsByFilter(
+  public userManagementControllerExportByFilter(
     filters: string,
     observe?: 'response',
     reportProgress?: boolean,
@@ -264,7 +264,7 @@ export class UserManagementService {
       context?: HttpContext;
     }
   ): Observable<HttpResponse<object>>;
-  public userManagementControllerExportClientsByFilter(
+  public userManagementControllerExportByFilter(
     filters: string,
     observe?: 'events',
     reportProgress?: boolean,
@@ -273,7 +273,7 @@ export class UserManagementService {
       context?: HttpContext;
     }
   ): Observable<HttpEvent<object>>;
-  public userManagementControllerExportClientsByFilter(
+  public userManagementControllerExportByFilter(
     filters: string,
     observe: any = 'body',
     reportProgress: boolean = false,
@@ -284,7 +284,7 @@ export class UserManagementService {
   ): Observable<any> {
     if (filters === null || filters === undefined) {
       throw new Error(
-        'Required parameter filters was null or undefined when calling userManagementControllerExportClientsByFilter.'
+        'Required parameter filters was null or undefined when calling userManagementControllerExportByFilter.'
       );
     }
 
@@ -351,7 +351,7 @@ export class UserManagementService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public userManagementControllerExportClientsExampleFile(
+  public userManagementControllerExportExampleFile(
     observe?: 'body',
     reportProgress?: boolean,
     options?: {
@@ -359,7 +359,7 @@ export class UserManagementService {
       context?: HttpContext;
     }
   ): Observable<object>;
-  public userManagementControllerExportClientsExampleFile(
+  public userManagementControllerExportExampleFile(
     observe?: 'response',
     reportProgress?: boolean,
     options?: {
@@ -367,7 +367,7 @@ export class UserManagementService {
       context?: HttpContext;
     }
   ): Observable<HttpResponse<object>>;
-  public userManagementControllerExportClientsExampleFile(
+  public userManagementControllerExportExampleFile(
     observe?: 'events',
     reportProgress?: boolean,
     options?: {
@@ -375,7 +375,7 @@ export class UserManagementService {
       context?: HttpContext;
     }
   ): Observable<HttpEvent<object>>;
-  public userManagementControllerExportClientsExampleFile(
+  public userManagementControllerExportExampleFile(
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: {
@@ -679,7 +679,117 @@ export class UserManagementService {
     return this.httpClient.get<FullUserDto>(
       `${
         this.configuration.basePath
-      }/v0/user-management/client/${encodeURIComponent(String(id))}`,
+      }/v0/user-management/users/${encodeURIComponent(String(id))}`,
+      {
+        context: localVarHttpContext,
+        responseType: <any>responseType_,
+        withCredentials: this.configuration.withCredentials,
+        headers: localVarHeaders,
+        observe: observe,
+        reportProgress: reportProgress,
+      }
+    );
+  }
+
+  /**
+   * @param file
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public userManagementControllerImport(
+    file: Blob,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<any>;
+  public userManagementControllerImport(
+    file: Blob,
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpResponse<any>>;
+  public userManagementControllerImport(
+    file: Blob,
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpEvent<any>>;
+  public userManagementControllerImport(
+    file: Blob,
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<any> {
+    if (file === null || file === undefined) {
+      throw new Error(
+        'Required parameter file was null or undefined when calling userManagementControllerImport.'
+      );
+    }
+
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined =
+      options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/json'];
+      localVarHttpHeaderAcceptSelected =
+        this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Accept',
+        localVarHttpHeaderAcceptSelected
+      );
+    }
+
+    let localVarHttpContext: HttpContext | undefined =
+      options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    // to determine the Content-Type header
+    const consumes: string[] = ['multipart/form-data'];
+
+    const canConsumeForm = this.canConsumeForm(consumes);
+
+    let localVarFormParams: { append(param: string, value: any): any };
+    let localVarUseForm = false;
+    let localVarConvertFormParamsToString = false;
+    // use FormData to transmit files using content-type "multipart/form-data"
+    // see https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data
+    localVarUseForm = canConsumeForm;
+    if (localVarUseForm) {
+      localVarFormParams = new FormData();
+    } else {
+      localVarFormParams = new HttpParams({ encoder: this.encoder });
+    }
+
+    if (file !== undefined) {
+      localVarFormParams =
+        (localVarFormParams.append('file', <any>file) as any) ||
+        localVarFormParams;
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.post<any>(
+      `${this.configuration.basePath}/v0/user-management/import-many`,
+      localVarConvertFormParamsToString
+        ? localVarFormParams.toString()
+        : localVarFormParams,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -862,116 +972,6 @@ export class UserManagementService {
     return this.httpClient.patch<FullUserDto>(
       `${this.configuration.basePath}/v0/user-management`,
       fullUserDto,
-      {
-        context: localVarHttpContext,
-        responseType: <any>responseType_,
-        withCredentials: this.configuration.withCredentials,
-        headers: localVarHeaders,
-        observe: observe,
-        reportProgress: reportProgress,
-      }
-    );
-  }
-
-  /**
-   * @param file
-   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-   * @param reportProgress flag to report request and response progress.
-   */
-  public userManagementControllerUploadClients(
-    file: Blob,
-    observe?: 'body',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<any>;
-  public userManagementControllerUploadClients(
-    file: Blob,
-    observe?: 'response',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<any>>;
-  public userManagementControllerUploadClients(
-    file: Blob,
-    observe?: 'events',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<any>>;
-  public userManagementControllerUploadClients(
-    file: Blob,
-    observe: any = 'body',
-    reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<any> {
-    if (file === null || file === undefined) {
-      throw new Error(
-        'Required parameter file was null or undefined when calling userManagementControllerUploadClients.'
-      );
-    }
-
-    let localVarHeaders = this.defaultHeaders;
-
-    let localVarHttpHeaderAcceptSelected: string | undefined =
-      options && options.httpHeaderAccept;
-    if (localVarHttpHeaderAcceptSelected === undefined) {
-      // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['application/json'];
-      localVarHttpHeaderAcceptSelected =
-        this.configuration.selectHeaderAccept(httpHeaderAccepts);
-    }
-    if (localVarHttpHeaderAcceptSelected !== undefined) {
-      localVarHeaders = localVarHeaders.set(
-        'Accept',
-        localVarHttpHeaderAcceptSelected
-      );
-    }
-
-    let localVarHttpContext: HttpContext | undefined =
-      options && options.context;
-    if (localVarHttpContext === undefined) {
-      localVarHttpContext = new HttpContext();
-    }
-
-    // to determine the Content-Type header
-    const consumes: string[] = ['multipart/form-data'];
-
-    const canConsumeForm = this.canConsumeForm(consumes);
-
-    let localVarFormParams: { append(param: string, value: any): any };
-    let localVarUseForm = false;
-    let localVarConvertFormParamsToString = false;
-    // use FormData to transmit files using content-type "multipart/form-data"
-    // see https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data
-    localVarUseForm = canConsumeForm;
-    if (localVarUseForm) {
-      localVarFormParams = new FormData();
-    } else {
-      localVarFormParams = new HttpParams({ encoder: this.encoder });
-    }
-
-    if (file !== undefined) {
-      localVarFormParams =
-        (localVarFormParams.append('file', <any>file) as any) ||
-        localVarFormParams;
-    }
-
-    let responseType_: 'text' | 'json' | 'blob' = 'json';
-    if (localVarHttpHeaderAcceptSelected) {
-      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-        responseType_ = 'text';
-      } else if (
-        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
-      ) {
-        responseType_ = 'json';
-      } else {
-        responseType_ = 'blob';
-      }
-    }
-
-    return this.httpClient.post<any>(
-      `${this.configuration.basePath}/v0/user-management/upload-clients`,
-      localVarConvertFormParamsToString
-        ? localVarFormParams.toString()
-        : localVarFormParams,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
