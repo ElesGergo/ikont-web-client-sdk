@@ -17,7 +17,6 @@ export * from './generalType';
 export * from './historyEventType';
 export * from './idRepsponeDto';
 export * from './idsRepsponeDto';
-export * from './importClientsDto';
 export * from './listColumnSort';
 export * from './loginDto';
 export * from './loginResponseDto';

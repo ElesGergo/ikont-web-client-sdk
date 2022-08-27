@@ -228,7 +228,7 @@ export class UserManagementService {
     }
 
     return this.httpClient.get<object>(
-      `${this.configuration.basePath}/v0/client-management/export-many`,
+      `${this.configuration.basePath}/v0/user-management/export-many`,
       {
         context: localVarHttpContext,
         params: localVarQueryParameters,
@@ -334,7 +334,7 @@ export class UserManagementService {
     }
 
     return this.httpClient.get<object>(
-      `${this.configuration.basePath}/v0/client-management/export-by-filter`,
+      `${this.configuration.basePath}/v0/user-management/export-by-filter`,
       {
         context: localVarHttpContext,
         params: localVarQueryParameters,
@@ -420,7 +420,7 @@ export class UserManagementService {
     }
 
     return this.httpClient.get<object>(
-      `${this.configuration.basePath}/v0/client-management/example-file`,
+      `${this.configuration.basePath}/v0/user-management/example-file`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -518,7 +518,7 @@ export class UserManagementService {
     return this.httpClient.get<object>(
       `${
         this.configuration.basePath
-      }/v0/client-management/failed-upload-result/${encodeURIComponent(
+      }/v0/user-management/failed-upload-result/${encodeURIComponent(
         String(id)
       )}`,
       {
@@ -593,7 +593,7 @@ export class UserManagementService {
     }
 
     return this.httpClient.get<PageableUser>(
-      `${this.configuration.basePath}/v0/client-management`,
+      `${this.configuration.basePath}/v0/user-management`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -679,7 +679,7 @@ export class UserManagementService {
     return this.httpClient.get<FullUserDto>(
       `${
         this.configuration.basePath
-      }/v0/client-management/client/${encodeURIComponent(String(id))}`,
+      }/v0/user-management/client/${encodeURIComponent(String(id))}`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -765,7 +765,7 @@ export class UserManagementService {
     return this.httpClient.delete<IdsRepsponeDto>(
       `${
         this.configuration.basePath
-      }/v0/client-management/bulk/${encodeURIComponent(String(ids))}`,
+      }/v0/user-management/bulk/${encodeURIComponent(String(ids))}`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -860,7 +860,7 @@ export class UserManagementService {
     }
 
     return this.httpClient.patch<FullUserDto>(
-      `${this.configuration.basePath}/v0/client-management`,
+      `${this.configuration.basePath}/v0/user-management`,
       fullUserDto,
       {
         context: localVarHttpContext,
@@ -968,7 +968,7 @@ export class UserManagementService {
     }
 
     return this.httpClient.post<any>(
-      `${this.configuration.basePath}/v0/client-management/upload-clients`,
+      `${this.configuration.basePath}/v0/user-management/upload-clients`,
       localVarConvertFormParamsToString
         ? localVarFormParams.toString()
         : localVarFormParams,

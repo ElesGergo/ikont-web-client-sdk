@@ -30,7 +30,6 @@ model/generalType.ts
 model/historyEventType.ts
 model/idRepsponeDto.ts
 model/idsRepsponeDto.ts
-model/importClientsDto.ts
 model/listColumnSort.ts
 model/loginDto.ts
 model/loginResponseDto.ts
