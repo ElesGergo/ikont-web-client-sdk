@@ -9,9 +9,19 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ListColumnSort } from './listColumnSort';
 
-export interface UserSettingsDto {
-  listColumnSort: ListColumnSort;
-  listColumnOrder: Array<string>;
+export interface CustomerDto {
+  id: number;
+  clientName: string;
+  customerAccountId: number;
+  adminPerson: string;
+  email: string;
+  administratorName: string;
+  customerAccountState: string;
+  softwarePackage: string;
+  storageCapacity: string;
+  softwareLicenceType: string;
+  startDate: string;
+  endDate: string;
+  registrationState: string;
 }

@@ -2,6 +2,8 @@ export * from './authentication.service';
 import { AuthenticationService } from './authentication.service';
 export * from './clientManagement.service';
 import { ClientManagementService } from './clientManagement.service';
+export * from './customerManagement.service';
+import { CustomerManagementService } from './customerManagement.service';
 export * from './location.service';
 import { LocationService } from './location.service';
 export * from './userManagement.service';
@@ -11,6 +13,7 @@ import { UserSettingsService } from './userSettings.service';
 export const APIS = [
   AuthenticationService,
   ClientManagementService,
+  CustomerManagementService,
   LocationService,
   UserManagementService,
   UserSettingsService,

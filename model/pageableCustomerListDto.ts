@@ -9,9 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ListColumnSort } from './listColumnSort';
+import { CustomerDto } from './customerDto';
 
-export interface UserSettingsDto {
-  listColumnSort: ListColumnSort;
-  listColumnOrder: Array<string>;
+export interface PageableCustomerListDto {
+  list: Array<CustomerDto>;
+  totalRecords: number;
 }
