@@ -6,6 +6,7 @@ api/authentication.service.ts
 api/clientManagement.service.ts
 api/customerManagement.service.ts
 api/location.service.ts
+api/userManagement.service.ts
 api/userSettings.service.ts
 configuration.ts
 encoder.ts
@@ -24,7 +25,9 @@ model/customerDto.ts
 model/customerHistoryResponse.ts
 model/customerHistorySuggestionDto.ts
 model/failedFileUploadDto.ts
+model/failedUserUploadDto.ts
 model/fullClientDto.ts
+model/fullUserDto.ts
 model/generalClientInformation.ts
 model/generalType.ts
 model/historyEventType.ts
@@ -36,6 +39,7 @@ model/loginResponseDto.ts
 model/models.ts
 model/pageableClientListDto.ts
 model/pageableCustomerListDto.ts
+model/pageableUser.ts
 model/passwordResetDto.ts
 model/positionDto.ts
 model/userSettingsDto.ts

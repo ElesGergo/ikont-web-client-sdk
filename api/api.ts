@@ -6,6 +6,8 @@ export * from './customerManagement.service';
 import { CustomerManagementService } from './customerManagement.service';
 export * from './location.service';
 import { LocationService } from './location.service';
+export * from './userManagement.service';
+import { UserManagementService } from './userManagement.service';
 export * from './userSettings.service';
 import { UserSettingsService } from './userSettings.service';
 export const APIS = [
@@ -13,5 +15,6 @@ export const APIS = [
   ClientManagementService,
   CustomerManagementService,
   LocationService,
+  UserManagementService,
   UserSettingsService,
 ];
