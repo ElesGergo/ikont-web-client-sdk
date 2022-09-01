@@ -9,9 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { CustomerListDto } from './customerListDto';
 
-export interface PageableCustomerListDto {
-  list: Array<CustomerListDto>;
-  totalRecords: number;
+export interface SoftwarePackage {
+  _package: string;
+  storageCapacity: string;
+  licenceType: string;
+  startDate: string;
+  endDate: string;
 }

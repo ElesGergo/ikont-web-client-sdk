@@ -9,9 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { CustomerListDto } from './customerListDto';
+import { HardwarePackage } from './hardwarePackage';
 
-export interface PageableCustomerListDto {
-  list: Array<CustomerListDto>;
-  totalRecords: number;
+export interface IkontBoxGroup {
+  shippingAddress: string;
+  productId: string;
+  productName: string;
+  hardwaresPackages: Array<HardwarePackage>;
 }
