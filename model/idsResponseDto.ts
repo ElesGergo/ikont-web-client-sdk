@@ -10,11 +10,6 @@
  * Do not edit the class manually.
  */
 
-export interface SoftwarePackage {
-  id: number;
-  _package: string;
-  storageCapacity: string;
-  licenceType: string;
-  startDate: string;
-  endDate: string;
+export interface IdsResponseDto {
+  ids: Array<number>;
 }

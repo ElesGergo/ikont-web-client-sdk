@@ -33,11 +33,13 @@ import { CustomerHistorySuggestionDto } from '../model/customerHistorySuggestion
 // @ts-ignore
 import { FailedFileUploadDto } from '../model/failedFileUploadDto';
 // @ts-ignore
+import { FullCustomerDto } from '../model/fullCustomerDto';
+// @ts-ignore
 import { HistoryEventType } from '../model/historyEventType';
 // @ts-ignore
-import { IdRepsponeDto } from '../model/idRepsponeDto';
+import { IdResponseDto } from '../model/idResponseDto';
 // @ts-ignore
-import { IdsRepsponeDto } from '../model/idsRepsponeDto';
+import { IdsResponseDto } from '../model/idsResponseDto';
 // @ts-ignore
 import { PageableCustomerListDto } from '../model/pageableCustomerListDto';
 
@@ -139,6 +141,102 @@ export class CustomerManagementService {
       throw Error('key may not be null if value is not object or array');
     }
     return httpParams;
+  }
+
+  /**
+   * @param customerDto
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public customerManagementControllerCreate(
+    customerDto: CustomerDto,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<FullCustomerDto>;
+  public customerManagementControllerCreate(
+    customerDto: CustomerDto,
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpResponse<FullCustomerDto>>;
+  public customerManagementControllerCreate(
+    customerDto: CustomerDto,
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpEvent<FullCustomerDto>>;
+  public customerManagementControllerCreate(
+    customerDto: CustomerDto,
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<any> {
+    if (customerDto === null || customerDto === undefined) {
+      throw new Error(
+        'Required parameter customerDto was null or undefined when calling customerManagementControllerCreate.'
+      );
+    }
+
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined =
+      options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/json'];
+      localVarHttpHeaderAcceptSelected =
+        this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Accept',
+        localVarHttpHeaderAcceptSelected
+      );
+    }
+
+    let localVarHttpContext: HttpContext | undefined =
+      options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    // to determine the Content-Type header
+    const consumes: string[] = ['application/json'];
+    const httpContentTypeSelected: string | undefined =
+      this.configuration.selectHeaderContentType(consumes);
+    if (httpContentTypeSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Content-Type',
+        httpContentTypeSelected
+      );
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.post<FullCustomerDto>(
+      `${this.configuration.basePath}/v0/customer-management`,
+      customerDto,
+      {
+        context: localVarHttpContext,
+        responseType: <any>responseType_,
+        withCredentials: this.configuration.withCredentials,
+        headers: localVarHeaders,
+        observe: observe,
+        reportProgress: reportProgress,
+      }
+    );
   }
 
   /**
@@ -813,19 +911,19 @@ export class CustomerManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<CustomerDto>;
+  ): Observable<FullCustomerDto>;
   public customerManagementControllerFindOne(
     id: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<CustomerDto>>;
+  ): Observable<HttpResponse<FullCustomerDto>>;
   public customerManagementControllerFindOne(
     id: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<CustomerDto>>;
+  ): Observable<HttpEvent<FullCustomerDto>>;
   public customerManagementControllerFindOne(
     id: string,
     observe: any = 'body',
@@ -874,7 +972,7 @@ export class CustomerManagementService {
       }
     }
 
-    return this.httpClient.get<CustomerDto>(
+    return this.httpClient.get<FullCustomerDto>(
       `${
         this.configuration.basePath
       }/v0/customer-management/customer/${encodeURIComponent(String(id))}`,
@@ -1213,19 +1311,19 @@ export class CustomerManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<IdRepsponeDto>;
+  ): Observable<IdResponseDto>;
   public customerManagementControllerRemove(
     id: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<IdRepsponeDto>>;
+  ): Observable<HttpResponse<IdResponseDto>>;
   public customerManagementControllerRemove(
     id: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<IdRepsponeDto>>;
+  ): Observable<HttpEvent<IdResponseDto>>;
   public customerManagementControllerRemove(
     id: string,
     observe: any = 'body',
@@ -1274,7 +1372,7 @@ export class CustomerManagementService {
       }
     }
 
-    return this.httpClient.delete<IdRepsponeDto>(
+    return this.httpClient.delete<IdResponseDto>(
       `${
         this.configuration.basePath
       }/v0/customer-management/${encodeURIComponent(String(id))}`,
@@ -1299,19 +1397,19 @@ export class CustomerManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<IdsRepsponeDto>;
+  ): Observable<IdsResponseDto>;
   public customerManagementControllerRemoveMany(
     ids: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<IdsRepsponeDto>>;
+  ): Observable<HttpResponse<IdsResponseDto>>;
   public customerManagementControllerRemoveMany(
     ids: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<IdsRepsponeDto>>;
+  ): Observable<HttpEvent<IdsResponseDto>>;
   public customerManagementControllerRemoveMany(
     ids: string,
     observe: any = 'body',
@@ -1360,10 +1458,106 @@ export class CustomerManagementService {
       }
     }
 
-    return this.httpClient.delete<IdsRepsponeDto>(
+    return this.httpClient.delete<IdsResponseDto>(
       `${
         this.configuration.basePath
       }/v0/customer-management/bulk/${encodeURIComponent(String(ids))}`,
+      {
+        context: localVarHttpContext,
+        responseType: <any>responseType_,
+        withCredentials: this.configuration.withCredentials,
+        headers: localVarHeaders,
+        observe: observe,
+        reportProgress: reportProgress,
+      }
+    );
+  }
+
+  /**
+   * @param fullCustomerDto
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public customerManagementControllerUpdate(
+    fullCustomerDto: FullCustomerDto,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<FullCustomerDto>;
+  public customerManagementControllerUpdate(
+    fullCustomerDto: FullCustomerDto,
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpResponse<FullCustomerDto>>;
+  public customerManagementControllerUpdate(
+    fullCustomerDto: FullCustomerDto,
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpEvent<FullCustomerDto>>;
+  public customerManagementControllerUpdate(
+    fullCustomerDto: FullCustomerDto,
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<any> {
+    if (fullCustomerDto === null || fullCustomerDto === undefined) {
+      throw new Error(
+        'Required parameter fullCustomerDto was null or undefined when calling customerManagementControllerUpdate.'
+      );
+    }
+
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined =
+      options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/json'];
+      localVarHttpHeaderAcceptSelected =
+        this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Accept',
+        localVarHttpHeaderAcceptSelected
+      );
+    }
+
+    let localVarHttpContext: HttpContext | undefined =
+      options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    // to determine the Content-Type header
+    const consumes: string[] = ['application/json'];
+    const httpContentTypeSelected: string | undefined =
+      this.configuration.selectHeaderContentType(consumes);
+    if (httpContentTypeSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Content-Type',
+        httpContentTypeSelected
+      );
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.patch<FullCustomerDto>(
+      `${this.configuration.basePath}/v0/customer-management`,
+      fullCustomerDto,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,

@@ -10,11 +10,6 @@
  * Do not edit the class manually.
  */
 
-export interface SoftwarePackage {
+export interface IdResponseDto {
   id: number;
-  _package: string;
-  storageCapacity: string;
-  licenceType: string;
-  startDate: string;
-  endDate: string;
 }

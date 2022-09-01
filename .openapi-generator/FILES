@@ -28,6 +28,7 @@ model/customerListDto.ts
 model/failedFileUploadDto.ts
 model/failedUserUploadDto.ts
 model/fullClientDto.ts
+model/fullCustomerDto.ts
 model/fullUserDto.ts
 model/generalClientInformation.ts
 model/generalCustomerAccountInformation.ts
@@ -35,8 +36,9 @@ model/generalType.ts
 model/hardwareGroup.ts
 model/hardwarePackage.ts
 model/historyEventType.ts
-model/idRepsponeDto.ts
+model/idResponseDto.ts
 model/idsRepsponeDto.ts
+model/idsResponseDto.ts
 model/ikontBoxGroup.ts
 model/listColumnSort.ts
 model/loginDto.ts

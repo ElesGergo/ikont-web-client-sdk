@@ -11,6 +11,7 @@
  */
 
 export interface HardwarePackage {
+  id: number;
   productId: string;
   productName: string;
   storage: string;
