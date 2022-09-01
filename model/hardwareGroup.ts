@@ -13,5 +13,5 @@ import { HardwarePackage } from './hardwarePackage';
 
 export interface HardwareGroup {
   shippingAddress: string;
-  hardwaresPackages: Array<HardwarePackage>;
+  hardwarePackages: Array<HardwarePackage>;
 }

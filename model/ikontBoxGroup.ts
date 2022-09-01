@@ -15,5 +15,5 @@ export interface IkontBoxGroup {
   shippingAddress: string;
   productId: string;
   productName: string;
-  hardwaresPackages: Array<HardwarePackage>;
+  hardwarePackages: Array<HardwarePackage>;
 }
