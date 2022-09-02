@@ -41,9 +41,9 @@ import { FullClientDto } from '../model/fullClientDto';
 // @ts-ignore
 import { HistoryEventType } from '../model/historyEventType';
 // @ts-ignore
-import { IdRepsponeDto } from '../model/idRepsponeDto';
+import { IdResponseDto } from '../model/idResponseDto';
 // @ts-ignore
-import { IdsRepsponeDto } from '../model/idsRepsponeDto';
+import { IdsResponseDto } from '../model/idsResponseDto';
 // @ts-ignore
 import { PageableClientListDto } from '../model/pageableClientListDto';
 // @ts-ignore
@@ -1570,19 +1570,19 @@ export class ClientManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<IdRepsponeDto>;
+  ): Observable<IdResponseDto>;
   public clientManagementControllerRemove(
     id: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<IdRepsponeDto>>;
+  ): Observable<HttpResponse<IdResponseDto>>;
   public clientManagementControllerRemove(
     id: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<IdRepsponeDto>>;
+  ): Observable<HttpEvent<IdResponseDto>>;
   public clientManagementControllerRemove(
     id: string,
     observe: any = 'body',
@@ -1631,7 +1631,7 @@ export class ClientManagementService {
       }
     }
 
-    return this.httpClient.delete<IdRepsponeDto>(
+    return this.httpClient.delete<IdResponseDto>(
       `${this.configuration.basePath}/v0/client-management/${encodeURIComponent(
         String(id)
       )}`,
@@ -1656,19 +1656,19 @@ export class ClientManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<IdsRepsponeDto>;
+  ): Observable<IdsResponseDto>;
   public clientManagementControllerRemoveMany(
     ids: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<IdsRepsponeDto>>;
+  ): Observable<HttpResponse<IdsResponseDto>>;
   public clientManagementControllerRemoveMany(
     ids: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<IdsRepsponeDto>>;
+  ): Observable<HttpEvent<IdsResponseDto>>;
   public clientManagementControllerRemoveMany(
     ids: string,
     observe: any = 'body',
@@ -1717,7 +1717,7 @@ export class ClientManagementService {
       }
     }
 
-    return this.httpClient.delete<IdsRepsponeDto>(
+    return this.httpClient.delete<IdsResponseDto>(
       `${
         this.configuration.basePath
       }/v0/client-management/bulk/${encodeURIComponent(String(ids))}`,
