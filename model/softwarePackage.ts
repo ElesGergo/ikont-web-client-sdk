@@ -12,7 +12,7 @@
 
 export interface SoftwarePackage {
   id: number;
-  _package: string;
+  softwarePackage: string;
   storageCapacity: string;
   licenceType: string;
   startDate: string;
