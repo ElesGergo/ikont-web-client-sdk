@@ -10,17 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface CustomerListDto {
-  id: number;
-  clientName: string;
-  adminPerson: string;
-  email: string;
-  administratorName: string;
-  softwarePackage: string;
-  storageCapacity: string;
-  softwareLicenceType: string;
-  softwareStartDate: string;
-  softwareEndDate: string;
-  customerAccountState: string;
-  registrationState: string;
+export interface HistorySuggestionDto {
+  field: string;
+  value: string | null;
 }

@@ -25,6 +25,7 @@ model/customerDto.ts
 model/customerHistoryResponse.ts
 model/customerHistorySuggestionDto.ts
 model/customerListDto.ts
+model/customerSuggestionDto.ts
 model/failedFileUploadDto.ts
 model/failedUserUploadDto.ts
 model/fullClientDto.ts
@@ -36,6 +37,8 @@ model/generalType.ts
 model/hardwareGroup.ts
 model/hardwarePackage.ts
 model/historyEventType.ts
+model/historyResponse.ts
+model/historySuggestionDto.ts
 model/idResponseDto.ts
 model/idsRepsponeDto.ts
 model/idsResponseDto.ts
