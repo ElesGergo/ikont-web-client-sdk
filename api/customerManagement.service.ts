@@ -325,9 +325,9 @@ export class CustomerManagementService {
     return this.httpClient.get<object>(
       `${
         this.configuration.basePath
-      }/v0/customer-management/export-general-informations/${encodeURIComponent(
+      }/v0/customer-management/customer/${encodeURIComponent(
         String(id)
-      )}`,
+      )}/general-informations-export`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -466,6 +466,128 @@ export class CustomerManagementService {
       }/v0/customer-management/customer/${encodeURIComponent(
         String(id)
       )}/history-export`,
+      {
+        context: localVarHttpContext,
+        params: localVarQueryParameters,
+        responseType: <any>responseType_,
+        withCredentials: this.configuration.withCredentials,
+        headers: localVarHeaders,
+        observe: observe,
+        reportProgress: reportProgress,
+      }
+    );
+  }
+
+  /**
+   * @param id
+   * @param softwareIds
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public customerManagementControllerExportCustomerSoftwarePackages(
+    id: string,
+    softwareIds: Array<string>,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/octet-stream';
+      context?: HttpContext;
+    }
+  ): Observable<object>;
+  public customerManagementControllerExportCustomerSoftwarePackages(
+    id: string,
+    softwareIds: Array<string>,
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/octet-stream';
+      context?: HttpContext;
+    }
+  ): Observable<HttpResponse<object>>;
+  public customerManagementControllerExportCustomerSoftwarePackages(
+    id: string,
+    softwareIds: Array<string>,
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/octet-stream';
+      context?: HttpContext;
+    }
+  ): Observable<HttpEvent<object>>;
+  public customerManagementControllerExportCustomerSoftwarePackages(
+    id: string,
+    softwareIds: Array<string>,
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: {
+      httpHeaderAccept?: 'application/octet-stream';
+      context?: HttpContext;
+    }
+  ): Observable<any> {
+    if (id === null || id === undefined) {
+      throw new Error(
+        'Required parameter id was null or undefined when calling customerManagementControllerExportCustomerSoftwarePackages.'
+      );
+    }
+    if (softwareIds === null || softwareIds === undefined) {
+      throw new Error(
+        'Required parameter softwareIds was null or undefined when calling customerManagementControllerExportCustomerSoftwarePackages.'
+      );
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (softwareIds) {
+      softwareIds.forEach((element) => {
+        localVarQueryParameters = this.addToHttpParams(
+          localVarQueryParameters,
+          <any>element,
+          'softwareIds'
+        );
+      });
+    }
+
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined =
+      options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/octet-stream'];
+      localVarHttpHeaderAcceptSelected =
+        this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Accept',
+        localVarHttpHeaderAcceptSelected
+      );
+    }
+
+    let localVarHttpContext: HttpContext | undefined =
+      options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.get<object>(
+      `${
+        this.configuration.basePath
+      }/v0/customer-management/customer/${encodeURIComponent(
+        String(id)
+      )}/software-packages-export`,
       {
         context: localVarHttpContext,
         params: localVarQueryParameters,
