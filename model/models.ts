@@ -11,6 +11,7 @@ export * from './customerDto';
 export * from './customerHistoryResponse';
 export * from './customerHistorySuggestionDto';
 export * from './customerListDto';
+export * from './customerSuggestionDto';
 export * from './failedFileUploadDto';
 export * from './failedUserUploadDto';
 export * from './fullClientDto';
