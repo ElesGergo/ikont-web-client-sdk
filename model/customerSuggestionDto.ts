@@ -15,8 +15,9 @@ export interface CustomerSuggestionDto {
   value: string | null;
 }
 export namespace CustomerSuggestionDto {
-  export type FieldEnum = 'clientName';
+  export type FieldEnum = 'clientName' | 'administratorName';
   export const FieldEnum = {
     ClientName: 'clientName' as FieldEnum,
+    AdministratorName: 'administratorName' as FieldEnum,
   };
 }
