@@ -21,6 +21,7 @@ model/clientHistoryResponse.ts
 model/clientHistorySuggestionDto.ts
 model/clientListDto.ts
 model/clientSuggestionDto.ts
+model/createUserDto.ts
 model/customerDto.ts
 model/customerHistoryResponse.ts
 model/customerHistorySuggestionDto.ts
@@ -43,6 +44,7 @@ model/idResponseDto.ts
 model/idsRepsponeDto.ts
 model/idsResponseDto.ts
 model/ikontBoxGroup.ts
+model/labelValue.ts
 model/listColumnSort.ts
 model/loginDto.ts
 model/loginResponseDto.ts
@@ -53,7 +55,10 @@ model/pageableCustomerListDto.ts
 model/pageableUser.ts
 model/passwordResetDto.ts
 model/positionDto.ts
+model/requestNewPassword.ts
+model/setPassword.ts
 model/softwarePackage.ts
+model/userExistsResponseDto.ts
 model/userSettingsDto.ts
 ng-package.json
 tsconfig.json

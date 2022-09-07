@@ -9,25 +9,26 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { LabelValue } from './labelValue';
 
 export interface FullUserDto {
   id: number;
   userName: string;
   userEmail: string;
-  role: Array<string>;
+  roles: Array<LabelValue>;
   userState: FullUserDto.UserStateEnum;
   registrationState: FullUserDto.RegistrationStateEnum;
 }
 export namespace FullUserDto {
-  export type UserStateEnum = 'ACTIVE' | 'SUSPENDED';
+  export type UserStateEnum = 'active' | 'suspended';
   export const UserStateEnum = {
-    Active: 'ACTIVE' as UserStateEnum,
-    Suspended: 'SUSPENDED' as UserStateEnum,
+    Active: 'active' as UserStateEnum,
+    Suspended: 'suspended' as UserStateEnum,
   };
-  export type RegistrationStateEnum = 'PENDING' | 'REGISTRATION' | 'DONE';
+  export type RegistrationStateEnum = 'inProgress' | 'registered' | 'active';
   export const RegistrationStateEnum = {
-    Pending: 'PENDING' as RegistrationStateEnum,
-    Registration: 'REGISTRATION' as RegistrationStateEnum,
-    Done: 'DONE' as RegistrationStateEnum,
+    InProgress: 'inProgress' as RegistrationStateEnum,
+    Registered: 'registered' as RegistrationStateEnum,
+    Active: 'active' as RegistrationStateEnum,
   };
 }
