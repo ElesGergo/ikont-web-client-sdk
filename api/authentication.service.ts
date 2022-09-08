@@ -35,6 +35,8 @@ import { RequestNewPassword } from '../model/requestNewPassword';
 // @ts-ignore
 import { RequestNewPasswordBulk } from '../model/requestNewPasswordBulk';
 // @ts-ignore
+import { RequestNewPasswordBulkResponse } from '../model/requestNewPasswordBulkResponse';
+// @ts-ignore
 import { SetPassword } from '../model/setPassword';
 
 // @ts-ignore
@@ -461,19 +463,19 @@ export class AuthenticationService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<RequestNewPasswordBulk>;
+  ): Observable<RequestNewPasswordBulkResponse>;
   public authControllerRequestBulkNewPassowrd(
     requestNewPasswordBulk: RequestNewPasswordBulk,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<RequestNewPasswordBulk>>;
+  ): Observable<HttpResponse<RequestNewPasswordBulkResponse>>;
   public authControllerRequestBulkNewPassowrd(
     requestNewPasswordBulk: RequestNewPasswordBulk,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<RequestNewPasswordBulk>>;
+  ): Observable<HttpEvent<RequestNewPasswordBulkResponse>>;
   public authControllerRequestBulkNewPassowrd(
     requestNewPasswordBulk: RequestNewPasswordBulk,
     observe: any = 'body',
@@ -536,7 +538,7 @@ export class AuthenticationService {
       }
     }
 
-    return this.httpClient.post<RequestNewPasswordBulk>(
+    return this.httpClient.post<RequestNewPasswordBulkResponse>(
       `${this.configuration.basePath}/v0/auth/password-request-bulk`,
       requestNewPasswordBulk,
       {

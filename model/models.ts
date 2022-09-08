@@ -43,6 +43,7 @@ export * from './passwordResetDto';
 export * from './positionDto';
 export * from './requestNewPassword';
 export * from './requestNewPasswordBulk';
+export * from './requestNewPasswordBulkResponse';
 export * from './setPassword';
 export * from './setUserStateDto';
 export * from './softwarePackage';

@@ -58,6 +58,7 @@ model/passwordResetDto.ts
 model/positionDto.ts
 model/requestNewPassword.ts
 model/requestNewPasswordBulk.ts
+model/requestNewPasswordBulkResponse.ts
 model/setPassword.ts
 model/setUserStateDto.ts
 model/softwarePackage.ts
