@@ -43,6 +43,8 @@ import { PageableUser } from '../model/pageableUser';
 // @ts-ignore
 import { SetUserStateDto } from '../model/setUserStateDto';
 // @ts-ignore
+import { UpdateUserDto } from '../model/updateUserDto';
+// @ts-ignore
 import { UserExistsResponseDto } from '../model/userExistsResponseDto';
 // @ts-ignore
 import { UserListDto } from '../model/userListDto';
@@ -1552,37 +1554,37 @@ export class UserManagementService {
   }
 
   /**
-   * @param fullUserDto
+   * @param updateUserDto
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public userManagementControllerUpdate(
-    fullUserDto: FullUserDto,
+    updateUserDto: UpdateUserDto,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<FullUserDto>;
   public userManagementControllerUpdate(
-    fullUserDto: FullUserDto,
+    updateUserDto: UpdateUserDto,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<FullUserDto>>;
   public userManagementControllerUpdate(
-    fullUserDto: FullUserDto,
+    updateUserDto: UpdateUserDto,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<FullUserDto>>;
   public userManagementControllerUpdate(
-    fullUserDto: FullUserDto,
+    updateUserDto: UpdateUserDto,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
-    if (fullUserDto === null || fullUserDto === undefined) {
+    if (updateUserDto === null || updateUserDto === undefined) {
       throw new Error(
-        'Required parameter fullUserDto was null or undefined when calling userManagementControllerUpdate.'
+        'Required parameter updateUserDto was null or undefined when calling userManagementControllerUpdate.'
       );
     }
 
@@ -1635,7 +1637,7 @@ export class UserManagementService {
 
     return this.httpClient.patch<FullUserDto>(
       `${this.configuration.basePath}/v0/user-management`,
-      fullUserDto,
+      updateUserDto,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,

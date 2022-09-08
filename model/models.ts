@@ -45,6 +45,7 @@ export * from './setPassword';
 export * from './setUserStateDto';
 export * from './softwarePackage';
 export * from './stateChangeReason';
+export * from './updateUserDto';
 export * from './userExistsResponseDto';
 export * from './userListDto';
 export * from './userSettingsDto';

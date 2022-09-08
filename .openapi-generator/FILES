@@ -60,6 +60,7 @@ model/setPassword.ts
 model/setUserStateDto.ts
 model/softwarePackage.ts
 model/stateChangeReason.ts
+model/updateUserDto.ts
 model/userExistsResponseDto.ts
 model/userListDto.ts
 model/userSettingsDto.ts
