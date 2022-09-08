@@ -41,6 +41,8 @@ import { IdsRepsponeDto } from '../model/idsRepsponeDto';
 // @ts-ignore
 import { PageableUser } from '../model/pageableUser';
 // @ts-ignore
+import { SetUserStateDto } from '../model/setUserStateDto';
+// @ts-ignore
 import { UserExistsResponseDto } from '../model/userExistsResponseDto';
 // @ts-ignore
 import { UserListDto } from '../model/userListDto';
@@ -1443,29 +1445,34 @@ export class UserManagementService {
 
   /**
    * @param id
+   * @param setUserStateDto
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public userManagementControllerSetUserState(
     id: string,
+    setUserStateDto: SetUserStateDto,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<FullUserDto>;
   public userManagementControllerSetUserState(
     id: string,
+    setUserStateDto: SetUserStateDto,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<FullUserDto>>;
   public userManagementControllerSetUserState(
     id: string,
+    setUserStateDto: SetUserStateDto,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<FullUserDto>>;
   public userManagementControllerSetUserState(
     id: string,
+    setUserStateDto: SetUserStateDto,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
@@ -1473,6 +1480,11 @@ export class UserManagementService {
     if (id === null || id === undefined) {
       throw new Error(
         'Required parameter id was null or undefined when calling userManagementControllerSetUserState.'
+      );
+    }
+    if (setUserStateDto === null || setUserStateDto === undefined) {
+      throw new Error(
+        'Required parameter setUserStateDto was null or undefined when calling userManagementControllerSetUserState.'
       );
     }
 
@@ -1499,6 +1511,17 @@ export class UserManagementService {
       localVarHttpContext = new HttpContext();
     }
 
+    // to determine the Content-Type header
+    const consumes: string[] = ['application/json'];
+    const httpContentTypeSelected: string | undefined =
+      this.configuration.selectHeaderContentType(consumes);
+    if (httpContentTypeSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Content-Type',
+        httpContentTypeSelected
+      );
+    }
+
     let responseType_: 'text' | 'json' | 'blob' = 'json';
     if (localVarHttpHeaderAcceptSelected) {
       if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
@@ -1516,7 +1539,7 @@ export class UserManagementService {
       `${
         this.configuration.basePath
       }/v0/user-management/users-state/${encodeURIComponent(String(id))}`,
-      null,
+      setUserStateDto,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
