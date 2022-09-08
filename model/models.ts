@@ -1,4 +1,5 @@
 export * from './addressSuggestionDto';
+export * from './bulkUserUploadDto';
 export * from './clientAddress';
 export * from './clientContact';
 export * from './clientDto';
@@ -41,6 +42,7 @@ export * from './pageableUser';
 export * from './passwordResetDto';
 export * from './positionDto';
 export * from './requestNewPassword';
+export * from './requestNewPasswordBulk';
 export * from './setPassword';
 export * from './setUserStateDto';
 export * from './softwarePackage';

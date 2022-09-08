@@ -25,6 +25,8 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
+import { BulkUserUploadDto } from '../model/bulkUserUploadDto';
+// @ts-ignore
 import { CreateUserDto } from '../model/createUserDto';
 // @ts-ignore
 import { FailedUserUploadDto } from '../model/failedUserUploadDto';
@@ -1312,19 +1314,19 @@ export class UserManagementService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<any>;
+  ): Observable<Array<BulkUserUploadDto>>;
   public userManagementControllerImport(
     file: Blob,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<any>>;
+  ): Observable<HttpResponse<Array<BulkUserUploadDto>>>;
   public userManagementControllerImport(
     file: Blob,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<any>>;
+  ): Observable<HttpEvent<Array<BulkUserUploadDto>>>;
   public userManagementControllerImport(
     file: Blob,
     observe: any = 'body',
@@ -1396,7 +1398,7 @@ export class UserManagementService {
       }
     }
 
-    return this.httpClient.post<any>(
+    return this.httpClient.post<Array<BulkUserUploadDto>>(
       `${this.configuration.basePath}/v0/user-management/import-many`,
       localVarConvertFormParamsToString
         ? localVarFormParams.toString()

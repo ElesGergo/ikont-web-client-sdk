@@ -33,6 +33,8 @@ import { PasswordResetDto } from '../model/passwordResetDto';
 // @ts-ignore
 import { RequestNewPassword } from '../model/requestNewPassword';
 // @ts-ignore
+import { RequestNewPasswordBulk } from '../model/requestNewPasswordBulk';
+// @ts-ignore
 import { SetPassword } from '../model/setPassword';
 
 // @ts-ignore
@@ -438,6 +440,105 @@ export class AuthenticationService {
     return this.httpClient.post<LoginResponseDto>(
       `${this.configuration.basePath}/v0/auth/login`,
       loginDto,
+      {
+        context: localVarHttpContext,
+        responseType: <any>responseType_,
+        withCredentials: this.configuration.withCredentials,
+        headers: localVarHeaders,
+        observe: observe,
+        reportProgress: reportProgress,
+      }
+    );
+  }
+
+  /**
+   * @param requestNewPasswordBulk
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public authControllerRequestBulkNewPassowrd(
+    requestNewPasswordBulk: RequestNewPasswordBulk,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<RequestNewPasswordBulk>;
+  public authControllerRequestBulkNewPassowrd(
+    requestNewPasswordBulk: RequestNewPasswordBulk,
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpResponse<RequestNewPasswordBulk>>;
+  public authControllerRequestBulkNewPassowrd(
+    requestNewPasswordBulk: RequestNewPasswordBulk,
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpEvent<RequestNewPasswordBulk>>;
+  public authControllerRequestBulkNewPassowrd(
+    requestNewPasswordBulk: RequestNewPasswordBulk,
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<any> {
+    if (
+      requestNewPasswordBulk === null ||
+      requestNewPasswordBulk === undefined
+    ) {
+      throw new Error(
+        'Required parameter requestNewPasswordBulk was null or undefined when calling authControllerRequestBulkNewPassowrd.'
+      );
+    }
+
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined =
+      options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/json'];
+      localVarHttpHeaderAcceptSelected =
+        this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Accept',
+        localVarHttpHeaderAcceptSelected
+      );
+    }
+
+    let localVarHttpContext: HttpContext | undefined =
+      options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    // to determine the Content-Type header
+    const consumes: string[] = ['application/json'];
+    const httpContentTypeSelected: string | undefined =
+      this.configuration.selectHeaderContentType(consumes);
+    if (httpContentTypeSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Content-Type',
+        httpContentTypeSelected
+      );
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.post<RequestNewPasswordBulk>(
+      `${this.configuration.basePath}/v0/auth/password-request-bulk`,
+      requestNewPasswordBulk,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,

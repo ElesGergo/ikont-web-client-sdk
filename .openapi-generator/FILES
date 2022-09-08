@@ -13,6 +13,7 @@ encoder.ts
 git_push.sh
 index.ts
 model/addressSuggestionDto.ts
+model/bulkUserUploadDto.ts
 model/clientAddress.ts
 model/clientContact.ts
 model/clientDto.ts
@@ -56,6 +57,7 @@ model/pageableUser.ts
 model/passwordResetDto.ts
 model/positionDto.ts
 model/requestNewPassword.ts
+model/requestNewPasswordBulk.ts
 model/setPassword.ts
 model/setUserStateDto.ts
 model/softwarePackage.ts
