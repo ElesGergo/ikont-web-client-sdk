@@ -784,29 +784,79 @@ export class UserManagementService {
   }
 
   /**
+   * @param searchValue
+   * @param filters
+   * @param page
+   * @param sort
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public userManagementControllerFindAll(
+    searchValue?: string,
+    filters?: string,
+    page?: string,
+    sort?: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<PageableUser>;
   public userManagementControllerFindAll(
+    searchValue?: string,
+    filters?: string,
+    page?: string,
+    sort?: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<PageableUser>>;
   public userManagementControllerFindAll(
+    searchValue?: string,
+    filters?: string,
+    page?: string,
+    sort?: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<PageableUser>>;
   public userManagementControllerFindAll(
+    searchValue?: string,
+    filters?: string,
+    page?: string,
+    sort?: string,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (searchValue !== undefined && searchValue !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>searchValue,
+        'searchValue'
+      );
+    }
+    if (filters !== undefined && filters !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>filters,
+        'filters'
+      );
+    }
+    if (page !== undefined && page !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>page,
+        'page'
+      );
+    }
+    if (sort !== undefined && sort !== null) {
+      localVarQueryParameters = this.addToHttpParams(
+        localVarQueryParameters,
+        <any>sort,
+        'sort'
+      );
+    }
+
     let localVarHeaders = this.defaultHeaders;
 
     let localVarHttpHeaderAcceptSelected: string | undefined =
@@ -847,6 +897,7 @@ export class UserManagementService {
       `${this.configuration.basePath}/v0/user-management`,
       {
         context: localVarHttpContext,
+        params: localVarQueryParameters,
         responseType: <any>responseType_,
         withCredentials: this.configuration.withCredentials,
         headers: localVarHeaders,
@@ -1433,7 +1484,9 @@ export class UserManagementService {
     }
 
     return this.httpClient.delete<IdsRepsponeDto>(
-      `${this.configuration.basePath}/v0/user-management/bulk`,
+      `${
+        this.configuration.basePath
+      }/v0/user-management/bulk/${encodeURIComponent(String(ids))}`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
