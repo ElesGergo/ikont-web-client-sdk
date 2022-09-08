@@ -12,7 +12,6 @@
 import { StateChangeReason } from './stateChangeReason';
 
 export interface SetUserStateDto {
-  exists: boolean;
   state: SetUserStateDto.StateEnum;
   reason?: StateChangeReason;
 }
