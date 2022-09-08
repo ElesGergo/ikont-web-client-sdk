@@ -9,9 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { FullUserDto } from './fullUserDto';
+import { UserListDto } from './userListDto';
 
 export interface PageableUser {
-  list: Array<FullUserDto>;
+  list: Array<UserListDto>;
   totalRecords: number;
 }

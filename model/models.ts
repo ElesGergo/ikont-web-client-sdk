@@ -44,4 +44,5 @@ export * from './requestNewPassword';
 export * from './setPassword';
 export * from './softwarePackage';
 export * from './userExistsResponseDto';
+export * from './userListDto';
 export * from './userSettingsDto';

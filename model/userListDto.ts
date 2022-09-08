@@ -11,16 +11,16 @@
  */
 import { LabelValue } from './labelValue';
 
-export interface FullUserDto {
+export interface UserListDto {
   id: number;
-  name: string;
-  email: string;
+  userName: string;
+  userEmail: string;
   roles: Array<LabelValue>;
   claims: Array<LabelValue>;
-  userState: FullUserDto.UserStateEnum;
-  registrationState: FullUserDto.RegistrationStateEnum;
+  userState: UserListDto.UserStateEnum;
+  registrationState: UserListDto.RegistrationStateEnum;
 }
-export namespace FullUserDto {
+export namespace UserListDto {
   export type UserStateEnum = 'active' | 'suspended';
   export const UserStateEnum = {
     Active: 'active' as UserStateEnum,

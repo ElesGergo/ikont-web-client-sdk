@@ -59,6 +59,7 @@ model/requestNewPassword.ts
 model/setPassword.ts
 model/softwarePackage.ts
 model/userExistsResponseDto.ts
+model/userListDto.ts
 model/userSettingsDto.ts
 ng-package.json
 tsconfig.json
