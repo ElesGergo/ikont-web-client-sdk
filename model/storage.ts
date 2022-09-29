@@ -10,14 +10,8 @@
  * Do not edit the class manually.
  */
 
-export interface CustomerSuggestionDto {
-  field: CustomerSuggestionDto.FieldEnum;
-  value: string | null;
-}
-export namespace CustomerSuggestionDto {
-  export type FieldEnum = 'clientName' | 'administratorName';
-  export const FieldEnum = {
-    ClientName: 'clientName' as FieldEnum,
-    AdministratorName: 'administratorName' as FieldEnum,
-  };
+export interface Storage {
+  storageName: string;
+  amount: number;
+  serialNumbers: Array<string>;
 }

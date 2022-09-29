@@ -11,7 +11,7 @@
  */
 
 export interface CustomerListDto {
-  id: number;
+  id: string;
   clientName: string;
   adminPerson: string;
   email: string;

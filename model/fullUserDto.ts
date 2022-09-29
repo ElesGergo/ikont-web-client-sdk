@@ -9,14 +9,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { LabelValue } from './labelValue';
+import { LabelValueDto } from './labelValueDto';
 
 export interface FullUserDto {
   id: number;
   name: string;
   email: string;
-  roles: Array<LabelValue>;
-  claims: Array<LabelValue>;
+  roles: Array<LabelValueDto>;
+  claims: Array<LabelValueDto>;
   userState: FullUserDto.UserStateEnum;
   registrationState: FullUserDto.RegistrationStateEnum;
 }

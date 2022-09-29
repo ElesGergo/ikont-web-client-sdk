@@ -10,14 +10,13 @@
  * Do not edit the class manually.
  */
 
-export interface CustomerSuggestionDto {
-  field: CustomerSuggestionDto.FieldEnum;
-  value: string | null;
+export interface SetCustomerStateDto {
+  state: SetCustomerStateDto.StateEnum;
 }
-export namespace CustomerSuggestionDto {
-  export type FieldEnum = 'clientName' | 'administratorName';
-  export const FieldEnum = {
-    ClientName: 'clientName' as FieldEnum,
-    AdministratorName: 'administratorName' as FieldEnum,
+export namespace SetCustomerStateDto {
+  export type StateEnum = 'active' | 'suspended';
+  export const StateEnum = {
+    Active: 'active' as StateEnum,
+    Suspended: 'suspended' as StateEnum,
   };
 }

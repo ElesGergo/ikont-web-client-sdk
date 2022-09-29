@@ -13,7 +13,7 @@ import { HardwarePackage } from './hardwarePackage';
 
 export interface IkontBoxGroup {
   shippingAddress: string;
-  productId: string;
+  productId?: string;
   productName: string;
   hardwarePackages: Array<HardwarePackage>;
 }

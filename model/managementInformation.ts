@@ -12,6 +12,19 @@
 
 export interface ManagementInformation {
   administratorName: string;
-  customerAccountState: string;
-  registrationState: string;
+  customerAccountState: ManagementInformation.CustomerAccountStateEnum;
+  registrationState: ManagementInformation.RegistrationStateEnum;
+}
+export namespace ManagementInformation {
+  export type CustomerAccountStateEnum = 'active' | 'suspended';
+  export const CustomerAccountStateEnum = {
+    Active: 'active' as CustomerAccountStateEnum,
+    Suspended: 'suspended' as CustomerAccountStateEnum,
+  };
+  export type RegistrationStateEnum = 'inProgress' | 'registered' | 'active';
+  export const RegistrationStateEnum = {
+    InProgress: 'inProgress' as RegistrationStateEnum,
+    Registered: 'registered' as RegistrationStateEnum,
+    Active: 'active' as RegistrationStateEnum,
+  };
 }

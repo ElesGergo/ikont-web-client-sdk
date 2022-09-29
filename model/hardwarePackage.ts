@@ -11,7 +11,7 @@
  */
 
 export interface HardwarePackage {
-  id: number;
+  id: string;
   productId: string;
   productName: string;
   storage: string;
@@ -20,4 +20,5 @@ export interface HardwarePackage {
   rentalPeriod: string;
   startDate: string;
   endDate: string;
+  closed: boolean;
 }

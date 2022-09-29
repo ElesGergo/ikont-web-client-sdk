@@ -15,9 +15,9 @@ import { IkontBoxGroup } from './ikontBoxGroup';
 import { SoftwarePackage } from './softwarePackage';
 
 export interface FullCustomerDto {
-  id: number;
+  id: string;
   general: GeneralCustomerAccountInformation;
   softwarePackages: Array<SoftwarePackage>;
   hardwareGroups: Array<HardwareGroup>;
-  ikontBoxGroup: Array<IkontBoxGroup>;
+  ikontBoxGroups: Array<IkontBoxGroup>;
 }

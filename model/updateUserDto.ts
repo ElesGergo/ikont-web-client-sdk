@@ -9,12 +9,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { LabelValue } from './labelValue';
+import { LabelValueDto } from './labelValueDto';
 
 export interface UpdateUserDto {
   id: number;
   name: string;
   email: string;
-  roles: Array<LabelValue>;
-  claims: Array<LabelValue>;
+  roles: Array<LabelValueDto>;
+  claims: Array<LabelValueDto>;
 }

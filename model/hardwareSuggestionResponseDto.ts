@@ -9,15 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { Storage } from './storage';
 
-export interface CustomerSuggestionDto {
-  field: CustomerSuggestionDto.FieldEnum;
-  value: string | null;
-}
-export namespace CustomerSuggestionDto {
-  export type FieldEnum = 'clientName' | 'administratorName';
-  export const FieldEnum = {
-    ClientName: 'clientName' as FieldEnum,
-    AdministratorName: 'administratorName' as FieldEnum,
-  };
+export interface HardwareSuggestionResponseDto {
+  id: string;
+  name: string;
+  amount: number;
+  storages: Array<Storage>;
 }

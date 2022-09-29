@@ -25,6 +25,8 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
+import { LabelValueDto } from '../model/labelValueDto';
+// @ts-ignore
 import { LoginDto } from '../model/loginDto';
 // @ts-ignore
 import { LoginResponseDto } from '../model/loginResponseDto';
@@ -219,17 +221,17 @@ export class AuthenticationService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<Array<string>>;
+  ): Observable<Array<LabelValueDto>>;
   public authControllerGetRoles(
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<Array<string>>>;
+  ): Observable<HttpResponse<Array<LabelValueDto>>>;
   public authControllerGetRoles(
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<Array<string>>>;
+  ): Observable<HttpEvent<Array<LabelValueDto>>>;
   public authControllerGetRoles(
     observe: any = 'body',
     reportProgress: boolean = false,
@@ -271,7 +273,7 @@ export class AuthenticationService {
       }
     }
 
-    return this.httpClient.get<Array<string>>(
+    return this.httpClient.get<Array<LabelValueDto>>(
       `${this.configuration.basePath}/v0/auth/roles`,
       {
         context: localVarHttpContext,

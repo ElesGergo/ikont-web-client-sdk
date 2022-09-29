@@ -11,10 +11,11 @@
  */
 
 export interface SoftwarePackage {
-  id: number;
+  id: string;
   softwarePackage: string;
   storageCapacity: string;
-  licenceType: string;
+  rentalPeriod: string;
   startDate: string;
   endDate: string;
+  closed: boolean;
 }

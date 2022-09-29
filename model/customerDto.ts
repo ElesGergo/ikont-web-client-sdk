@@ -9,14 +9,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { GeneralCustomerAccountInformation } from './generalCustomerAccountInformation';
-import { HardwareGroup } from './hardwareGroup';
-import { IkontBoxGroup } from './ikontBoxGroup';
-import { SoftwarePackage } from './softwarePackage';
+import { CreateSoftwarePackage } from './createSoftwarePackage';
+import { StatusLessGeneralCustomerAccountInformation } from './statusLessGeneralCustomerAccountInformation';
+import { CreateIkontBoxGroup } from './createIkontBoxGroup';
+import { CreateHardwareGroup } from './createHardwareGroup';
 
 export interface CustomerDto {
-  general: GeneralCustomerAccountInformation;
-  softwarePackages: Array<SoftwarePackage>;
-  hardwareGroups: Array<HardwareGroup>;
-  ikontBoxGroup: Array<IkontBoxGroup>;
+  general: StatusLessGeneralCustomerAccountInformation;
+  softwarePackages: Array<CreateSoftwarePackage>;
+  hardwareGroups: Array<CreateHardwareGroup>;
+  ikontBoxGroups: Array<CreateIkontBoxGroup>;
 }

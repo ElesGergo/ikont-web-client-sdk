@@ -9,15 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { CreateHardwarePackage } from './createHardwarePackage';
 
-export interface CustomerSuggestionDto {
-  field: CustomerSuggestionDto.FieldEnum;
-  value: string | null;
-}
-export namespace CustomerSuggestionDto {
-  export type FieldEnum = 'clientName' | 'administratorName';
-  export const FieldEnum = {
-    ClientName: 'clientName' as FieldEnum,
-    AdministratorName: 'administratorName' as FieldEnum,
-  };
+export interface CreateIkontBoxGroup {
+  shippingAddress: string;
+  productId?: string;
+  productName: string;
+  hardwarePackages: Array<CreateHardwarePackage>;
 }
